@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini-Training · Disengagement — Kodland Tutor Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- HOME -->
+<div id="screen-home" class="screen active">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome();return false;">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub" data-i18n="logoSub"></span>
+    </a>
+    <div class="nav-r">
+      <button class="tbtn" onclick="toggleTheme()">🌓</button>
+    </div>
+  </nav>
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow" data-i18n="heroEyebrow"></div>
+      <h1 data-i18n-html="heroTitle"></h1>
+      <p data-i18n="heroIntro"></p>
+      <div class="card"><p data-i18n="heroWork"></p></div>
+      <button class="start-btn" onclick="goDashboard()" data-i18n="startBtn"></button>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="screen-path" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome();return false;">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub" data-i18n="logoSub"></span>
+    </a>
+    <div class="nav-r">
+      <span id="ntag" style="font-size:13px;color:var(--text-muted);font-weight:700;display:none"></span>
+      <button class="tbtn" onclick="devUnlockAll()" data-i18n-title="devTitle" title="">🔓</button>
+      <button class="tbtn" onclick="toggleTheme()">🌓</button>
+    </div>
+  </nav>
+  <div class="msec">
+    <div class="slbl">Your learning path</div>
+    <div class="grid" id="mgrid"></div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div id="screen-content" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome();return false;">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub" data-i18n="logoSub"></span>
+    </a>
+    <div class="nav-r">
+      <button class="tbtn" onclick="goDashboard()" data-i18n-title="backToPath" title="">🏠</button>
+      <button class="tbtn" onclick="toggleTheme()">🌓</button>
+    </div>
+  </nav>
+  <div class="cbody" id="contentBody"></div>
+</div>
+
+<!-- RESULTS -->
+<div id="screen-results" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome();return false;">
+      <span class="logo-mark">kodland</span><span class="logo-div"></span><span class="logo-sub" data-i18n="logoSub"></span>
+    </a>
+    <div class="nav-r"><button class="tbtn" onclick="toggleTheme()">🌓</button></div>
+  </nav>
+  <div class="rbody" id="resultsBody"></div>
+</div>
+
+
+<script>window.PROG_KEY_OVERRIDE='kl-mt-no_interest-progress';</script>
+<script src="assets/content-id.js"></script>
+<script src="assets/engine.js"></script>
+</body>
+</html>
