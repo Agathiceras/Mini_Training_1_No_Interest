@@ -1,12 +1,28 @@
 /* Kodland — Refund mini-training: shared engine (all languages).
    Each <lang>.html loads assets/content-<lang>.js first (defines PAGE_LANG and CONTENT), then this file. */
 
+/* ---------- safe storage ----------
+   Inside the LMS iframe the browser treats this site's storage as third-party:
+   Safari and strict privacy settings can block or wipe it. Every value is kept
+   in memory + localStorage + sessionStorage and reads never throw, so the
+   training keeps its progress for the whole visit even when storage is blocked. */
+const STORE=(function(){
+  const mem={};
+  function areas(){ const a=[]; try{ a.push(window.localStorage); }catch(e){} try{ a.push(window.sessionStorage); }catch(e){} return a; }
+  return {
+    get(k){ for(const st of areas()){ try{ const v=st.getItem(k); if(v!==null) return v; }catch(e){} } return Object.prototype.hasOwnProperty.call(mem,k)?mem[k]:null; },
+    getAll(k){ const out=[]; for(const st of areas()){ try{ const v=st.getItem(k); if(v!==null) out.push(v); }catch(e){} } if(Object.prototype.hasOwnProperty.call(mem,k)) out.push(mem[k]); return out; },
+    set(k,v){ v=String(v); mem[k]=v; for(const st of areas()){ try{ st.setItem(k,v); }catch(e){} } },
+    remove(k){ delete mem[k]; for(const st of areas()){ try{ st.removeItem(k); }catch(e){} } }
+  };
+})();
+
 const PROG_KEY=window.PROG_KEY_OVERRIDE||'kl-mt-progress';
 const THEME_KEY='kl-rf-theme';
 const DEV_KEY='kl-rf-devmode';
 const LANG_KEY='kl-rf-lang';
 const KNOWN_LANGS=['en'];
-const LANG=(typeof PAGE_LANG!=='undefined')?PAGE_LANG:(localStorage.getItem(LANG_KEY)||'en');
+const LANG=(typeof PAGE_LANG!=='undefined')?PAGE_LANG:(STORE.get(LANG_KEY)||'en');
 
 let MODULES=[];
 let currentModule=null;
@@ -27,8 +43,11 @@ function applyStaticI18n(){
 }
 function setLang(lang){
   if(KNOWN_LANGS.indexOf(lang)===-1) return;
-  try{ localStorage.setItem(LANG_KEY,lang); }catch(e){}
-  location.href=lang+'.html';
+  STORE.set(LANG_KEY,lang);
+  // Carry progress in the URL so switching language never loses it, even if storage is blocked.
+  const q=new URLSearchParams(location.search); q.delete('p');
+  q.set('p', JSON.stringify(getProgress()));
+  location.href=lang+'.html?'+q.toString();
 }
 function toggleLang(e){
   e.stopPropagation();
@@ -40,11 +59,56 @@ document.addEventListener('click',function(){
 });
 
 /* ---------- progress ---------- */
-function getProgress(){ try{ return JSON.parse(localStorage.getItem(PROG_KEY)||'{}'); }catch(e){ return {}; } }
-function saveProgress(p){ try{ localStorage.setItem(PROG_KEY, JSON.stringify(p)); }catch(e){} }
+// Progress only ever moves forward: a module passed anywhere stays passed, best score wins.
+function mergeProgress(a,b){
+  const out={};
+  [a||{},b||{}].forEach(src=>{ Object.keys(src).forEach(k=>{
+    const v=src[k]||{}; const prev=out[k]||{};
+    out[k]={passed: prev.passed===true||v.passed===true, score: Math.max(Number(prev.score)||0, Number(v.score)||0)};
+  }); });
+  return out;
+}
+function getProgress(){
+  let p={};
+  STORE.getAll(PROG_KEY).forEach(raw=>{ try{ p=mergeProgress(p, JSON.parse(raw||'{}')); }catch(e){} });
+  return p;
+}
+function saveProgress(p){ STORE.set(PROG_KEY, JSON.stringify(p)); lmsSync(); }
 function isPassed(id){ const p=getProgress(); return p[id]?.passed===true; }
 function getScore(id){ const p=getProgress(); return p[id]?.score||0; }
 function setResult(id,pct,passed){ const p=getProgress(); const prev=p[id]||{}; p[id]={passed:passed||prev.passed===true,score:Math.max(pct,prev.score||0)}; saveProgress(p); }
+/* ---------- LMS bridge ----------
+   Talks to the LMS (parent frame) via postMessage. Outside an iframe it does nothing.
+   Training -> LMS: {source:'kodland-training', training, lang, event:'ready'|'progress'|'completed', progress, done, total, score}
+   The LMS unlocks the test (DST) when it receives 'completed' ("Material first, then the test" on):
+   that happens once every module of the learning path is passed. Nothing is sent in developer mode.
+   LMS -> Training (optional): {source:'kodland-lms', event:'progress', progress:{...}} restores saved progress. */
+const TRAINING_ID='mini-'+String(PROG_KEY).replace(/^kl-mt-/,'').replace(/-progress$/,'');
+const IN_LMS=(function(){ try{ return window.parent!==window; }catch(e){ return true; } })();
+let lmsReady=false, completedSent=false;
+function isDevMode(){ return STORE.get(DEV_KEY)==='1'; }
+function allModulesPassed(){ const p=getProgress(); return MODULES.length>0 && MODULES.every(m=>p[m.id]?.passed===true); }
+function lmsSend(event){
+  try{
+    if(!IN_LMS || !lmsReady || isDevMode() || !MODULES.length) return;
+    const p=getProgress();
+    const done=MODULES.filter(m=>p[m.id]?.passed===true).length;
+    const score=Math.round(MODULES.map(m=>Number(p[m.id]?.score)||0).reduce((a,b)=>a+b,0)/MODULES.length);
+    window.parent.postMessage({source:'kodland-training', training:TRAINING_ID, lang:LANG, event:event, progress:p, done:done, total:MODULES.length, score:score}, '*');
+  }catch(e){}
+}
+// 'completed' is sent once per page load, as soon as every module is passed (also on load, if it was already done).
+function lmsSync(){ if(!lmsReady) return; lmsSend('progress'); if(!completedSent && !isDevMode() && allModulesPassed()){ completedSent=true; lmsSend('completed'); } }
+window.addEventListener('message', function(e){
+  try{
+    if(!IN_LMS || e.source!==window.parent) return;
+    const d=e.data; if(!d || d.source!=='kodland-lms' || d.event!=='progress' || !d.progress || typeof d.progress!=='object') return;
+    STORE.set(PROG_KEY, JSON.stringify(mergeProgress(getProgress(), d.progress)));
+    const onPath=document.getElementById('screen-path').classList.contains('active');
+    renderHome(); if(onPath) showScreen('screen-path');
+    lmsSync();
+  }catch(err){}
+});
 function shuf(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 
 /* ---------- screens / theme ---------- */
@@ -55,44 +119,56 @@ function toggleTheme(){
   const cur=html.getAttribute('data-theme');
   const next = cur==='dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', next);
-  try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+  STORE.set(THEME_KEY, next);
 }
-(function(){ try{ const t=localStorage.getItem(THEME_KEY); if(t) document.documentElement.setAttribute('data-theme',t); }catch(e){} })();
+(function(){ const t=STORE.get(THEME_KEY); if(t) document.documentElement.setAttribute('data-theme',t); })();
 
 function goDashboard(){ renderHome(); showScreen('screen-path'); window.scrollTo(0,0); }
 
-/* ---------- dev mode (button on the path screen, or Shift+D x3) ---------- */
+/* ---------- dev mode: reviewers only ----------
+   The 🔓 button and Shift+D x3 work only when the page is opened with ?dev=1
+   (same rule as the Attendance training). Turning developer mode off restores the
+   real progress saved before it was turned on, so it can never be used to skip modules. */
+const DEV_ALLOWED=/[?&]dev=1(&|$)/.test(location.search);
+const DEV_BACKUP=PROG_KEY+'-devbackup';
+function restoreRealProgress(){
+  const b=STORE.get(DEV_BACKUP);
+  STORE.set(PROG_KEY, b||'{}');
+  STORE.remove(DEV_BACKUP);
+  STORE.remove(DEV_KEY);
+}
 function devUnlockAll(){
-  MODULES.forEach(m=>setResult(m.id,100,true));
-  renderHome();
-  alert(T('devUnlockAlert'));
+  if(!DEV_ALLOWED) return;
+  if(!isDevMode()) toggleDevMode();
+  else { renderHome(); alert(T('devUnlockAlert')); }
+}
+function toggleDevMode(){
+  if(!DEV_ALLOWED) return;
+  if(!isDevMode()){
+    STORE.set(DEV_BACKUP, JSON.stringify(getProgress()));
+    STORE.set(DEV_KEY,'1');
+    const p=getProgress(); MODULES.forEach(m=>{ p[m.id]={passed:true,score:100}; }); STORE.set(PROG_KEY, JSON.stringify(p));
+    showDevBadge(true);
+    renderHome();
+    alert(T('devOn'));
+  } else {
+    restoreRealProgress();
+    showDevBadge(false);
+    renderHome();
+    alert(T('devOff'));
+  }
 }
 (function(){
   let _dSeq=0, _dTimer=null;
   document.addEventListener('keydown',function(e){
     if(e.key==='D' && e.shiftKey){
+      if(!DEV_ALLOWED) return;
       clearTimeout(_dTimer);
       _dSeq++;
       _dTimer=setTimeout(()=>_dSeq=0,1200);
       if(_dSeq>=3){ _dSeq=0; toggleDevMode(); }
     }
   });
-  function toggleDevMode(){
-    const active=localStorage.getItem(DEV_KEY)==='1';
-    if(!active){
-      MODULES.forEach(m=>setResult(m.id,100,true));
-      localStorage.setItem(DEV_KEY,'1');
-      showDevBadge(true);
-      renderHome();
-      alert(T('devOn'));
-    } else {
-      localStorage.removeItem(DEV_KEY);
-      localStorage.removeItem(PROG_KEY);
-      showDevBadge(false);
-      renderHome();
-      alert(T('devOff'));
-    }
-  }
   window.showDevBadge=function(on){
     let b=document.getElementById('dev-badge');
     if(!b){
@@ -344,12 +420,22 @@ function timeline(steps){
 }
 
 /* ---------- init ---------- */
-if(localStorage.getItem(DEV_KEY)==='1' && window.showDevBadge) window.showDevBadge(true);
+// Opened without ?dev=1: leave developer mode and go back to the real progress.
+if(isDevMode() && !DEV_ALLOWED) restoreRealProgress();
+if(isDevMode() && window.showDevBadge) window.showDevBadge(true);
+// The 🔓 developer button is shown only with ?dev=1.
+if(!DEV_ALLOWED) document.querySelectorAll('[onclick="devUnlockAll()"]').forEach(b=>{ b.style.display='none'; });
 MODULES = CONTENT.buildModules();
+{ // progress carried over from a language switch (?p=...)
+  const q=new URLSearchParams(location.search); const raw=q.get('p');
+  if(raw){ try{ STORE.set(PROG_KEY, JSON.stringify(mergeProgress(getProgress(), JSON.parse(raw)))); }catch(e){}
+    q.delete('p'); try{ history.replaceState(null,'',location.pathname+(q.toString()?'?'+q.toString():'')+location.hash); }catch(e){} }
+}
 document.documentElement.lang = LANG;
 document.documentElement.dir = CONTENT.dir || 'ltr';
 { const btn=document.getElementById('langBtn'); if(btn) btn.innerHTML = `${CONTENT.flag||'🌐'} ${LANG.toUpperCase()} <span style="font-size:10px">▾</span>`; }
 document.querySelectorAll('.lang-item').forEach(it=>{ it.classList.toggle('active', it.getAttribute('data-lang')===LANG); });
 applyStaticI18n();
+lmsReady=true; lmsSend('ready'); lmsSync();
 renderHome();
 if(location.search.indexOf('start=1')!==-1){ goDashboard(); }
