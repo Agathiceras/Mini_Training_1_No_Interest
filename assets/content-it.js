@@ -99,7 +99,7 @@ const CONTENT = {
   {t:'📮 Avvisa subito e conosci l’unica frase sicura', html:`
    <div class="card"><p>Puoi scoprire che esiste una richiesta dai commenti del Client Service sul profilo del bambino nel BO — non c’è un sistema automatico che ti avvisa. Una volta che lo sai, quello che hai visto nelle tue lezioni è un’informazione che il Client Service non può avere in nessun altro modo.</p></div>
    ${numlist([
-     'Lascia un commento nel BO il giorno stesso con esattamente ciò che hai visto — date e fatti concreti, non impressioni',
+     'Lascia un commento nel BO il giorno stesso riportando esattamente ciò che hai visto',
      'Includi le parole testuali della famiglia, se le hai',
      'Coinvolgi il tuo Team Leader il giorno stesso',
      'Non confermare mai che un rimborso è stato approvato e non parlare mai di importi'
@@ -143,7 +143,7 @@ const CONTENT = {
        {ic:'📷', html:`<strong>Inizia invitando tutti ad accendere videocamera e microfono.</strong> È sempre la prima raccomandazione, ed è uguale per tutto il gruppo.`},
        {ic:'💬', html:`<strong>Poi offri altri modi per partecipare.</strong> Se uno studente non si sente a suo agio con videocamera o microfono, lascia che partecipi con gli strumenti con cui <em>si sente</em> a suo agio: reazioni, chat pubblica o privata, condivisione dello schermo.`},
        {ic:'🙋', html:`<strong>Fai domande vere.</strong> Chiedi delle loro idee e del loro lavoro — e conoscili, così le tue domande si collegano a ciò che a loro interessa davvero.`},
-       {ic:'🔄', html:`<strong>Sii flessibile.</strong> Adatta il modo in cui inviti a partecipare a ogni studente, invece di una regola unica che non va bene per nessuno.`},
+       {ic:'🔄', html:`<strong>Sii flessibile.</strong> Adatta il modo in cui inviti ogni studente a partecipare, invece di una regola unica che non va bene per nessuno.`},
        {ic:'🎲', html:`<strong>Per i più piccoli, trasformalo in un gioco.</strong> Offri piccole ricompense e usa giochi a tempo — <em>«chi lo trova in 30 secondi?»</em> — così partecipare diventa divertente, non rischioso.`}
       ],
       video:{src:'https://drive.google.com/file/d/16PcuvAmbjneDFu-3325ReQdB8Wf4YcYs/preview', title:'Uno spazio sicuro per fare domande', brief:'In questo video gli studenti si sentono al sicuro nel fare domande, nel contribuire ai problemi dei compagni e nel chiedere aiuto al tutor. Nota con quanta gentilezza e comprensione il tutor parla con loro.'}},
@@ -164,7 +164,7 @@ const CONTENT = {
        {ic:'🤝', html:`<strong>Favorisci l’amicizia</strong> tra compagni — compiti condivisi, aiuto reciproco, apprezzamento per il lavoro degli altri.`},
        {ic:'📜', html:`<strong>Fai rispettare le regole della classe</strong> — e gestisci i turni per parlare e per ascoltare.`},
        {ic:'🔧', html:`<strong>Gestisci i problemi tecnici con calma.</strong> Aiuta lo studente che ne ha uno, senza lasciare indietro il resto del gruppo — nessuno dovrebbe annoiarsi a lezione.`},
-       {ic:'⚖️', html:`<strong>Sii fermo e gentile.</strong> Anche l’indisciplina mette a disagio gli studenti. Trova l’equilibrio: non puoi essere autoritario, ma non puoi nemmeno perdere il controllo della classe.`}
+       {ic:'⚖️', html:`<strong>Sii fermo e gentile.</strong> Anche l’indisciplinatezza mette a disagio gli studenti. Trova l’equilibrio: non puoi essere autoritario, ma non puoi nemmeno perdere il controllo della classe.`}
       ],
       video:{src:'https://drive.google.com/file/d/1NtrwskCgGVzSy97z-VaDwtMNEfchUiTk/preview', title:'Mostrare un interesse sincero', brief:'In questo video il tutor mostra un interesse sincero per gli studenti durante la chiacchierata iniziale — nota che uno studente ha un gesso e gli chiede come sta.'}}
    ])}
@@ -172,7 +172,7 @@ const CONTENT = {
   {t:'🚦 Classifica ciò che vedi e agisci di conseguenza', html:`
    ${classifyCard('co-ok','🟢','Nessun segnale persistente nel tempo. Partecipa alla maggior parte delle lezioni, condivide lo schermo, mostra progressi.','Mantieni viva la relazione — ogni 4 lezioni invia al genitore una prova concreta dei progressi, prima che sia lui a chiederla.')}
    ${classifyCard('co-cute','🟡','Un segnale si presenta in modo costante per tutta una lezione o si ripete in due lezioni — oppure due segnali nella stessa lezione.','Parla con lo studente durante la lezione e cerca con delicatezza di capire il motivo. Potrebbe trattarsi solo di timidezza.')}
-   ${classifyCard('co-danger','🔴','Più di due segnali nella stessa lezione, oppure due segnali persistenti in più di una lezione.','Avvisa il tuo Team Leader il giorno stesso, con dettagli concreti. Continua a fare bene le lezioni e resta cordiale con la famiglia — la proposta di una lezione extra, di un cambio di orario o di qualsiasi altra cosa arriva dal tuo TL, mai direttamente da te.')}
+   ${classifyCard('co-danger','🔴','Più di due segnali nella stessa lezione oppure due segnali che persistono in più lezioni (o in lezioni consecutive)','Avvisa il tuo Team Leader il giorno stesso, con dettagli concreti. Continua a svolgere le lezioni e resta cordiale con la famiglia — la proposta di una lezione extra, di un cambio di orario o di qualsiasi altra cosa arriva dal tuo TL, mai direttamente da te.')}
    ${classifyCard('co-danger','🚨','Lo studente non mostra alcun interesse per la programmazione o per i corsi Kodland — qualunque altra cosa tu stia osservando.','Trattalo subito come Rosso. Questo motivo è già segnalato come ad alta priorità, quindi prevale su qualsiasi altra valutazione.')}
   `}
  ],
@@ -238,10 +238,10 @@ const CONTENT = {
      'Uso la chiacchierata iniziale per conoscere i miei studenti e creare una comunità nel gruppo',
      'Prima invito tutti ad accendere videocamera e microfono — poi offro altri modi per partecipare (reazioni, chat pubblica o privata, condivisione dello schermo) agli studenti che non si sentono a loro agio',
      'Mantengo fisso l’obiettivo di apprendimento, ma lascio che gli studenti esplorino gli argomenti che preferiscono — non solo la storia della lezione',
-     'Mostro prima io, do istruzioni chiare e verifico che tutti abbiano capito prima di iniziare',
+     'Mostro io per primo l’esercizio, do istruzioni chiare e verifico che tutti abbiano capito prima di iniziare',
      'Chiedo a tutti di condividere lo schermo, a turno, e do un feedback costruttivo: cosa sta andando bene e su cosa lavorare dopo',
      'Regolo la difficoltà — una sfida extra per chi finisce prima, supporto o un livello più basso per chi fa fatica',
-     'Rendo normali gli errori, faccio rispettare le regole della classe e i turni per parlare e ascoltare, e resto fermo ma gentile',
+     'Faccio capire che sbagliare è normale, faccio rispettare le regole della classe e i turni per parlare e ascoltare, e resto fermo ma gentile',
      'Se uno studente arriva stanco a causa dell’orario, ne parlo con il genitore e lascio un commento nel BO',
      'Se il corso non è quello che si aspettava, resto flessibile a lezione e propongo al mio Team Leader una lezione motivazionale o di verifica del livello'
    ])}

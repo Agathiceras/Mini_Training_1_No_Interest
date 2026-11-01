@@ -11,7 +11,7 @@ const CONTENT = {
     heroIntro:"Bu eğitimi, programlamaya veya tasarıma ilgi duymadıkları için iade talep eden öğrencileriniz olduğu için alıyorsunuz. Burada, bir eğitmen olarak neler yapabileceğinizi ve bu tür durumları nasıl yöneteceğinizi göstereceğiz.",
     heroWork:"4 kısa modülü tamamlayın. Bir sonraki modülün kilidini açmak için her modül kontrolünde en az %70 almanız gerekir. Toplam süre yaklaşık 15–20 dakikadır.",
     startBtn:"🚀 Eğitimi Başlat",
-    pathLabel:'Öğrenme yolunuz',
+    pathLabel:'Öğrenme Yolunuz',
     devTitle:'Geliştirici: inceleme için tüm modüllerin kilidini aç',
     backToPath:'Öğrenme yoluna dön',
     modulesPassed:'{done} / {total} modül tamamlandı',
@@ -200,7 +200,7 @@ const CONTENT = {
    <p><strong>Çok zorsa:</strong> ona destek olun. Etkinliğin zorluğunu biraz azaltabilir, kodun nasıl çalıştığını açıklarken onu paylaşarak arkasındaki süreci anlamasını sağlayabilir ve etkinliği kolaylaştırmak için ek ipuçları verebilirsiniz; her zaman önce kamerada nasıl yapıldığını gösterin ve sizi takip ettiğinden emin olun. Ders dışında da onunla ilgilenin ve öğrenmeye devam etme motivasyonunu korumak için iyi yaptığı bir şeyi vurgulayın.</p>`)}
   `},
   {t:'🤝 Öğrencilerimizi Tanımak', html:`
-   <div class="card"><p>İlgisi azalmış bir öğrencinin dikkatini geri kazanmanın bir kısmı, onunla gerçek bir bağ kurmaktan geçer — öğrenci, sınıf arkadaşları ve sizin aranızda bir bağ — ve yalnızca sevdiği bir konuyu öğrenmek için değil, eğitmenini ve sınıf arkadaşlarını yeniden görmek için de her derse dönmek isteyeceği güvenli bir alan yaratmaktan.</p></div>
+   <div class="card"><p>İlgisi azalmış bir öğrencinin dikkatini geri kazanmak; onunla, sınıf arkadaşlarıyla ve sizin aranızda gerçek bir bağ kurmaktan geçer. Böylece öğrenci, sadece sevdiği bir konuyu öğrenmek için değil; eğitmenini ve arkadaşlarını yeniden görmek isteyeceği güvenli bir alana dönmek için her derse katılmak için can atacaktır.</p></div>
    ${iconGrid([
      {ic:'👫', html:`<strong>Arkadaşlığı teşvik edin</strong> — grup çalışmaları ve ortak görevlerle.`},
      {ic:'🎮', html:`<strong>Ortak ilgi alanlarını sorun</strong> — en sevdikleri diziler veya video oyunları, yaşadıkları yerle ilgili küçük merak konuları.`},
