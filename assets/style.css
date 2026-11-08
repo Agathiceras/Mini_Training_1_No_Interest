@@ -186,7 +186,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 .mt-pic-crop img{position:absolute;display:block;max-width:none;height:auto}
 .sib-strat{display:inline-flex;align-items:center;gap:6px;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:15px;color:var(--coral-d);text-transform:uppercase;letter-spacing:.5px;margin:0 0 6px}
 .dt{margin-bottom:16px;scroll-margin-top:90px}
-.dt-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.dt-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
 @media(max-width:700px){.dt-bar{grid-template-columns:repeat(2,1fr)}}
 .dt-btn{display:flex;flex-direction:column;align-items:center;gap:6px;background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:14px 8px 12px;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:14.5px;color:var(--text2);cursor:pointer;box-shadow:var(--shadow);transition:transform .15s,border-color .15s,background .15s}
 .dt-btn:hover{transform:translateY(-2px)}

@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mini-Training · Disengagement — Kodland Tutor Training</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/theme.css">
+<style>:root,:root[data-theme="dark"]{--pink:#E24E93;--pink-d:#C93876;--coral:#E24E93;--coral-d:#C93876}:root:not([data-theme="dark"]){--pink-l:#FBE6F0}</style>
 </head>
 <body>
 
@@ -26,7 +29,12 @@
       <div class="eyebrow" data-i18n="heroEyebrow"></div>
       <h1 data-i18n-html="heroTitle"></h1>
       <p data-i18n="heroIntro"></p>
-      <div class="card"><p data-i18n="heroWork"></p></div>
+      <div class="hero-art" id="heroArt"></div>
+      <div class="hero-cards">
+        <div class="hcard"><span class="hc-ic">🧑‍💻</span><div data-i18n-html="heroCard1"></div></div>
+        <div class="hcard"><span class="hc-ic">🧪</span><div data-i18n-html="heroCard2"></div></div>
+      </div>
+      <p class="hero-work" data-i18n="heroWork" style="font-size:14.5px;font-weight:700"></p>
       <button class="start-btn" onclick="goDashboard()" data-i18n="startBtn"></button>
     </div>
   </div>
@@ -47,7 +55,8 @@
     </div>
   </nav>
   <div class="msec">
-    <div class="slbl">Your learning path</div>
+    <div class="slbl" data-i18n="pathLabel"></div>
+    <div class="pbar"><b id="pbCount">0/6</b><div class="ptrack"><i id="pbFill"></i></div><span data-i18n="pbLabel"></span></div>
     <div class="grid" id="mgrid"></div>
   </div>
 </div>
@@ -80,7 +89,9 @@
 </div>
 
 
-<script>window.PROG_KEY_OVERRIDE='kl-mt-no_interest-progress';</script>
+<canvas id="confetti"></canvas>
+
+<script>window.PROG_KEY_OVERRIDE='kl-mt-no_interest-progress'; window.HERO_ART={ill:'chat',orbs:['🎮','💡','⭐','🛟']};</script>
 <script src="assets/content-ar.js"></script>
 <script src="assets/engine.js"></script>
 </body>
