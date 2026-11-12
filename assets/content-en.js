@@ -22,7 +22,7 @@ const CONTENT = {
     heroEyebrow:"🎯 Mini-Training",
     heroTitle:"Catching <span class=\"h-pill\">Disengagement</span> Early",
     heroIntro:"You've received this training because you have students who have requested a refund because they aren't interested in programming or design. Here, we'll show you what you can do as a tutor and how to handle these situations.",
-    heroWork:"Work through 4 short modules. Each module check needs 70%+ to unlock the next. About 15–20 minutes total.",
+    heroWork:"Work through 4 short modules. Each module check needs 70%+ to unlock the next. About 25–30 minutes total.",
     startBtn:"🚀 Start Training",
     pathLabel:'Your learning path',
     devTitle:'Dev: unlock all modules for review',
@@ -202,8 +202,8 @@ const CONTENT = {
 },
 {id:'attract', numLabel:'Module 2', emoji:'🧭', color:'var(--coral)',
  title:'Attracting Their Attention',
- desc:'For disengagement that isn\'t extreme yet: what usually causes it, and what you can actually adapt in the lesson.',
- obj:'Recognise the most common non-extreme causes of disengagement — course fit, schedule, and difficulty level — and know what to adapt yourself versus what to route through your Team Leader.',
+ desc:'For disengagement that isn\'t extreme yet: what usually causes it, what you can adapt in the lesson, how to show the parent what progress looks like in the first month, and how to support students with special needs or anxiety.',
+ obj:'Recognise the most common non-extreme causes of disengagement — course fit, schedule, and difficulty level — know what to adapt yourself versus what to route through your Team Leader, set the family\'s expectations about progress in the first month, and adapt pace, routine and the size of each step for students with special needs or anxiety.',
  sections:[
   {t:'🔎 Three common cases', html:`
    ${stepIconBlock('🔄','The course wasn\'t what they expected, or they realized design/programming isn\'t for them', `<div class="mt-pic-crop" style="aspect-ratio:1792/852"><img src="Pictures_T1/image%201.png" alt="A child frowning at a laptop screen" style="width:107.14%;left:-3.571%;top:-13.146%"></div><div class="sib-strat">🎯 Strategy</div><p>Talk to your Team Leader about the possibility of a motivational lesson. Be flexible in class — let the student adapt their work (for example, skip the storytelling wrapper but still learn the lesson's core topic). A leveling lesson can also help: the student might find a different Kodland course that actually fits what they want, which can save the refund by redirecting them to something they'll enjoy.</p>`)}
@@ -219,17 +219,83 @@ const CONTENT = {
      {ic:'🎮', html:`<strong>Ask about shared interests</strong> — favourite shows or video games, small curiosities about where they live.`},
      {ic:'🌟', html:`<strong>Acknowledge something good or clever</strong> a student did or said in class.`}
    ])}
+  `},
+  {t:'📅 The first month: show the parent what progress looks like', html:`
+   <div class="card"><p>A parent who can't see progress often assumes there isn't any. The first lessons of a course build foundations — logging in, getting to know the tools, small first steps — and from the outside that can look like "nothing is happening". If nobody tells the family what to expect, "my child isn't learning anything" quickly becomes "my child isn't interested".</p></div>
+   ${patternCards([
+     {ic:'🧭', title:'Finds their way', desc:'Logs in and moves around the platform and the course tool on their own.', note:'Less help needed every week is real progress.'},
+     {ic:'🪜', title:'Finishes small tasks', desc:'Completes the short tasks of each lesson, with less support each time.', note:'Effort and independence, not perfection.'},
+     {ic:'🗣️', title:'Explains it', desc:'Can say in their own words what they did and why.', note:'Ask them to show the parent at home.'},
+     {ic:'🏁', title:'Has something to show', desc:'A first small result: something that moves, a first drawing, a first working program.', note:'Check the manual: what is the first thing the course builds?'}
+   ],2)}
+   ${rclock([
+     {ic:'👋', when:'After lesson 1–2', t:'Set the picture', d:'What we did, what the first weeks look like, and how the family can help at home.'},
+     {ic:'🏁', when:'Around lesson 4', t:'First evidence', d:'Something concrete the child made or can now do — a screenshot or a sentence is enough.'},
+     {ic:'🔭', when:'Every 4 lessons', t:'Keep it going', d:'What they learned, what comes next, and one thing to celebrate.'}
+   ])}
+   <div class="card" style="background:var(--surface2)"><h4>📨 Message after the first lessons — copy and adapt</h4>
+   <p style="font-size:13.5px;line-height:1.75"><em>"Hi [parent's name], I'm [your name], [student]'s tutor. In our first lessons [student] got to know [the tool] and [what they did — e.g. made a character move on the screen]. The first weeks of the course are about building the basics, so you'll see small steps first: finding their way around the platform, finishing short tasks on their own, and explaining what they did. A great way to support [student] at home is to ask them to show you what they made. I'll keep you posted on their progress."</em></p></div>
+   ${doavoid(
+     ['Describe progress in concrete, small steps the parent can see','Invite the parent to ask the child to show what they made','Send the first evidence before the parent asks for it'],
+     ['Promising results: <em>"by next month he\'ll be making his own games"</em>','Technical jargon the parent can\'t picture','Writing only when something has gone wrong']
+   )}
+   ${co('co-cute','😟',`<p><strong>If a parent is upset because a module's or a lesson's activity isn't what they wanted.</strong> Listen first. Then tell them what the next modules will cover (check the course program), and explain that the storytelling can be adapted to what their child enjoys — the tools and the knowledge stay the same. In courses that use several tools, offer the flexibility to work with a different program for the same task; the wiki / teacher notes list alternatives for many of them. If they want something the course doesn't include, report it in BO and tell your Team Leader — never promise a course change.</p><p><em>"I understand — this activity isn't quite what [student] was hoping for. In the next modules we'll [what comes next]. And the storytelling is flexible: [student] can adapt the story to [their interest]. What matters is the skill they're learning, and that stays the same."</em></p>`)}
+  `},
+  {t:'🧠 Students with special needs or anxiety: pace, routine, smaller steps', html:`
+   <div class="card"><p>Some students who seem to have "lost interest" are actually <strong>overwhelmed</strong>. Autism (ASD), ADHD and anxiety can make a group lesson online feel unpredictable, too fast or too long — and a child who feels like that switches off. The family may not have told you, the student may still be in the middle of a diagnosis, or may never have been assessed. <strong>You don't need a diagnosis to adapt your lesson</strong> — and you never give one: no labels for the child, not to the family and not to anyone in the group.</p></div>
+   ${co('co-idea','🌈',`<p><strong>It's a spectrum.</strong> Two students with the same diagnosis can behave completely differently: one talks non-stop about a favourite topic, another avoids the microphone, another finishes in minutes and gets bored, another needs an exact routine to feel safe. Get to know the child in front of you — that matters more than the label.</p>`)}
+   ${dimTabs([
+     {ic:'🔁', title:'Routine',
+      intro:'Predictability lowers anxiety and frees attention for the content.',
+      tips:[
+       {ic:'🧱', html:`<strong>Same structure every lesson:</strong> opening, practice and closing, always in the same order.`},
+       {ic:'⏭️', html:`<strong>Announce changes before they happen:</strong> <em>"In 5 minutes we'll switch activity, and then we'll…"</em> A sudden change can make a student freeze or refuse.`},
+       {ic:'📋', html:`<strong>A numbered list on the screen or in the chat</strong> with the steps of the lesson, so the student always knows where they are.`},
+       {ic:'⏲️', html:`<strong>Timers, with care.</strong> They help students who enjoy a challenge; for those who get frustrated under time pressure, show the timer only as a visual reference — no counting out loud.`}
+      ]},
+     {ic:'🐢', title:'Pace',
+      intro:'Slow down your delivery — not the student\'s ambition.',
+      tips:[
+       {ic:'⏳', html:`<strong>Give time to answer.</strong> Wait a few seconds longer than feels natural before you repeat or move on.`},
+       {ic:'🗣️', html:`<strong>A calm voice and a slower pace</strong> communicate safety before you even say a word of content.`},
+       {ic:'🤸', html:`<strong>Short movement breaks</strong> between blocks help attention more than asking them to sit still: <em>"Want to stand up for 10 seconds, and then we'll carry on?"</em>`},
+       {ic:'🚀', html:`<strong>Fast and easily bored?</strong> Use the extra activities in the lesson, or add a variation, a visual challenge or a personal touch to the project.`}
+      ]},
+     {ic:'🪜', title:'Smaller steps',
+      intro:'Turn "finish the project" into small tasks, each with a visible finish line.',
+      tips:[
+       {ic:'🎯', html:`<strong>Micro-tasks:</strong> <em>"Let's just do the character's background — tell me when it's ready."</em> Every small finish is a real sense of achievement.`},
+       {ic:'1️⃣', html:`<strong>One instruction at a time,</strong> and repeat the goal before each activity.`},
+       {ic:'✅', html:`<strong>A visible checklist</strong> of what's done and what's left, so they don't rely on memory. Useful when a student says "I'm done" and then realises they lost track.`},
+       {ic:'🧗', html:`<strong>Show the first step, then let them do the rest</strong> — and give a little less help as the lesson goes on.`}
+      ]},
+     {ic:'💬', title:'Other ways in',
+      intro:'Not every student will answer out loud — and that\'s fine.',
+      tips:[
+       {ic:'😀', html:`<strong>Accept answers in the chat,</strong> with emojis, reactions or by pointing at the screen.`},
+       {ic:'✌️', html:`<strong>Offer two visible options</strong> instead of an open question: <em>"The red car or the blue one?"</em> rather than <em>"What would you like to do?"</em>`},
+       {ic:'🎉', html:`<strong>Celebrate any intentional communication,</strong> not only spoken answers.`},
+       {ic:'⭐', html:`<strong>Use their favourite topic as the hook.</strong> A strong interest is a way in: build today's task around it.`}
+      ]}
+   ],'✅ That\'s routine, pace, smaller steps and other ways in.')}
+   ${co('co-cute','🫂',`<p><strong>When frustration, tears or a shutdown come.</strong> Regulate yourself first: lower your voice and your pace. Name the emotion without judging it — <em>"I can see this is frustrating"</em> — and offer something concrete instead of "calm down": <em>"Let's look at it together."</em> Go back to a step where they succeeded, and only return to the content once the emotion has settled. Never force eye contact, the camera or more work in that moment. End by recognising the effort, not only the result.</p>`)}
+   ${co('co-idea','👪',`<p><strong>With the family, share observations — not judgments.</strong> Instead of <em>"He misbehaved in class"</em>, try: <em>"Today I noticed Maria got frustrated when we changed activity without warning. Have you noticed anything similar at home? What helps her?"</em> Families know what works. If the family doesn't reply, keep your lesson consistent, note your attempts, and let Client Service handle the communication if it becomes difficult.</p>`)}
+   ${co('co-danger','📝',`<p><strong>When adapting in the group isn't enough</strong> — the child keeps switching off, or seems to need a different pace than the group can give — leave a comment in BO with what you saw and what you tried, and tell your Team Leader. You recommend; they decide. Never promise individual lessons or a format change yourself.</p>`)}
   `}
  ],
  ix:{
   title:'Attracting their attention — module check',
-  instr:'Pick the best move for each situation. 70% to unlock the final checklist.',
+  instr:'Pick the best move or sort each situation. 70% to unlock the final checklist.',
   items:[
    {type:'choice', prompt:'A student finishes every activity far faster than the group, then starts distracting the others. What\'s the most useful first move?', opts:['Tell the parents the course seems too easy and ask what they\'d like to do','Wait a few lessons to see whether the rest of the group catches up','Raise the difficulty for them — an extra challenge or a head start on homework'], correct:2, fb:'Boredom needs a real challenge, adapted in the lesson. A student who doesn\'t feel challenged sees no point in the course.'},
    {type:'choice', prompt:'A student is consistently tired and unfocused in a class scheduled right after school. What\'s the best first step?', opts:['Talk with the parent about how the schedule is working and leave a comment in BO','Keep the current schedule — it was agreed at sign-up','Ask the student to rest more before class'], correct:0, fb:'A schedule that drains the student is often fixable — talk to the parent and leave the comment in BO, so a change can be considered before motivation is lost.'},
    {type:'choice', prompt:'A student says the topics don\'t interest them and they wish they\'d picked a different Kodland course. What can you do yourself?', opts:['Tell them you\'ll arrange a switch to the course they prefer','Stay flexible with how they approach tasks, and raise a motivational or leveling lesson with your Team Leader','Explain that course changes are handled by another department and continue the lesson'], correct:1, fb:'You can adapt how they work in the lesson and raise the leveling-lesson option with your Team Leader — you can\'t promise a course switch yourself.'},
    {type:'choice', prompt:'A student is struggling with the level and getting frustrated. Which of these helps most?', opts:['Moving on quickly so they don\'t feel singled out','Showing on camera how it\'s done first, sharing code while explaining how it works, and checking they follow','Letting them copy a classmate\'s solution so they can keep up'], correct:1, fb:'Demonstrate first, explain the process behind the code, and check understanding — then follow up outside the lesson with something they did well.'},
-   {type:'choice', prompt:'Which of these best builds the kind of bond that brings a disengaged student back?', opts:['Keeping small talk out of the lesson so there\'s more time for content','Mostly calling on the students who always answer, to keep the pace up','Group tasks, questions about their favourite games or shows, and noticing something clever they said'], correct:2, fb:'A connection with classmates and with you is what makes a student want to come back every lesson — not only the topic.'}
+   {type:'choice', prompt:'Which of these best builds the kind of bond that brings a disengaged student back?', opts:['Keeping small talk out of the lesson so there\'s more time for content','Mostly calling on the students who always answer, to keep the pace up','Group tasks, questions about their favourite games or shows, and noticing something clever they said'], correct:2, fb:'A connection with classmates and with you is what makes a student want to come back every lesson — not only the topic.'},
+   {type:'choice', prompt:'It\'s the fourth lesson of a new course and the parent hasn\'t heard from you yet. What do you send?', opts:['A short message with something concrete their child made, what they\'re learning now and what comes next','"Everything is going great, no worries!"','Nothing — if there were a problem, the parent would write'], correct:0, fb:'Concrete evidence of small steps shows the family what progress looks like in the first month — before "he isn\'t learning anything" turns into "he isn\'t interested".'},
+   {type:'sort', prompt:'Which adaptation is this?', card:'Before switching activity you say: "In 5 minutes we\'ll stop drawing and start animating." A student who used to freeze at every change now follows along.', zones:[{label:'🔁 Routine', fb:'Correct — announcing changes before they happen makes the lesson predictable, and predictability lowers anxiety.'},{label:'🐢 Pace', fb:'Not quite — nothing slowed down. The change was announced in advance: that\'s Routine.'},{label:'🪜 Smaller steps', fb:'Not quite — the task wasn\'t split. Announcing the change in advance is about Routine.'}], correctZone:0},
+   {type:'choice', prompt:'A student with ADHD keeps saying "I\'m done!" and then admits they lost track of what they were doing. What helps most?', opts:['Asking them to sit still and concentrate harder','Micro-tasks with a visible finish line and a checklist of what\'s done and what\'s left','Giving the whole project at once so they can work at their own speed'], correct:1, fb:'Small tasks with a clear finish, plus a visible checklist, take the load off memory — and every small finish is a real win.'},
+   {type:'choice', prompt:'A student starts crying when their task doesn\'t work. What do you do first?', opts:['"Calm down, it\'s not a big deal — let\'s keep going."','Lower your voice, name the feeling — "I can see this is frustrating" — and offer something concrete: "Let\'s look at it together."','Move on with the group and come back to them at the end of the lesson'], correct:1, fb:'"Calm down" gives the child nothing to do. Name the emotion, offer a concrete action, go back to a step they succeeded at — and only return to the content once they\'ve settled.'}
   ]
  }
 },
@@ -256,7 +322,12 @@ const CONTENT = {
      'I adjust the difficulty — an extra challenge for fast finishers, support or a lower level for those who struggle',
      'I normalise mistakes, keep the class rules and the turns to speak and listen, and stay firm but kind',
      'If a student arrives tired because of the schedule, I talk with the parent and leave a comment in BO',
-     'If the course isn\'t what they expected, I stay flexible in class and raise a motivational or leveling lesson with my Team Leader'
+     'If the course isn\'t what they expected, I stay flexible in class and raise a motivational or leveling lesson with my Team Leader',
+     'In the first month I show the parent what progress looks like: a message after the first lessons, and concrete evidence around lesson 4',
+     'I keep the same lesson structure, announce changes before they happen, and show the steps of the lesson on screen or in the chat',
+     'For students with special needs or anxiety, I slow my delivery, split tasks into small steps with a visible finish, and accept answers in the chat or with reactions',
+     'I never label or diagnose a child — I share concrete observations with the family and ask what works at home',
+     'When adapting in the group isn\'t enough, I leave a comment in BO and tell my Team Leader — I never promise individual lessons or a format change'
    ])}
   `},
   {t:'', html:`
