@@ -22,7 +22,7 @@ const CONTENT = {
     heroEyebrow:"🎯 Mini-entrenamiento",
     heroTitle:"Detectar a tiempo la <span class=\"h-pill\">desconexión</span>",
     heroIntro:"Has recibido este entrenamiento porque tienes estudiantes que han solicitado un reembolso porque no les interesa la programación o el diseño. Aquí te mostraremos qué puedes hacer como tutor y cómo manejar estas situaciones.",
-    heroWork:"Completa 4 módulos cortos. Cada comprobación de módulo requiere un 70 % o más para desbloquear el siguiente. En total, unos 15–20 minutos.",
+    heroWork:"Completa 4 módulos cortos. Necesitas obtener al menos un 70 % en la evaluación de cada módulo para desbloquear el siguiente. Duración total aproximada: 25–30 minutos.",
     startBtn:"🚀 Comenzar el entrenamiento",
     pathLabel:'Tu ruta de aprendizaje',
     devTitle:'Dev: desbloquear todos los módulos para revisión',
@@ -202,8 +202,8 @@ const CONTENT = {
 },
 {id:'attract', numLabel:'Módulo 2', emoji:'🧭', color:'var(--coral)',
  title:'Atraer su atención',
- desc:'Para una desconexión que todavía no es extrema: qué suele causarla y qué puedes adaptar realmente en la clase.',
- obj:'Reconocer las causas más comunes de desconexión que aún no es extrema — el ajuste al curso, el horario y el nivel de dificultad — y saber qué adaptar tú mismo y qué canalizar a través de tu Team Leader.',
+ desc:'Para situaciones en las que la falta de interés todavía no es extrema: qué suele causarla, qué puedes adaptar durante la clase, cómo mostrarles a los padres cómo se ve el progreso durante el primer mes y cómo apoyar a estudiantes con necesidades especiales o ansiedad.',
+ obj:'Reconocer las causas más comunes de la falta de interés que aún no es extrema —la adecuación del curso, los horarios y el nivel de dificultad—, saber qué puedes adaptar por tu cuenta y qué debes escalar a tu Team Leader, establecer expectativas sobre el progreso durante el primer mes y adaptar el ritmo, la rutina y el tamaño de cada actividad para estudiantes con necesidades especiales o ansiedad.',
  sections:[
   {t:'🔎 Tres casos frecuentes', html:`
    ${stepIconBlock('🔄','El curso no era lo que esperaba, o se ha dado cuenta de que el diseño o la programación no es lo suyo', `<div class="mt-pic-crop" style="aspect-ratio:1792/852"><img src="Pictures_T1/image%201.png" alt="Un niño frunciendo el ceño ante la pantalla de un portátil" style="width:107.14%;left:-3.571%;top:-13.146%"></div><div class="sib-strat">🎯 Estrategia</div><p>Habla con tu Team Leader sobre la posibilidad de una clase motivacional. Sé flexible en la clase — deja que el estudiante adapte su trabajo (por ejemplo, que se salte la parte narrativa pero aprenda igualmente el tema central de la lección). Una clase de nivelación también puede ayudar: el estudiante podría encontrar otro curso de Kodland que sí encaje con lo que quiere, lo cual puede evitar el reembolso al redirigirlo hacia algo que va a disfrutar.</p>`)}
@@ -219,17 +219,81 @@ const CONTENT = {
      {ic:'🎮', html:`<strong>Pregunta por intereses en común</strong> — series o videojuegos favoritos, pequeñas curiosidades sobre el lugar donde viven.`},
      {ic:'🌟', html:`<strong>Reconoce algo bueno o ingenioso</strong> que un estudiante hizo o dijo en clase.`}
    ])}
+  `},
+  {t:'📅 El primer mes: mostrarles a los padres cómo se ve el progreso', html:`
+   <div class="card"><p>Cuando los padres no pueden ver el progreso, suelen asumir que no está ocurriendo. Las primeras clases de un curso permiten construir las bases: iniciar sesión, familiarizarse con las herramientas y dar pequeños primeros pasos. Desde fuera, esto puede parecer que «no está pasando nada». Si nadie le explica a la familia qué puede esperar, «mi hijo no está aprendiendo nada» puede convertirse rápidamente en «mi hijo no está interesado».</p></div>
+   ${patternCards([
+     {ic:'🧭', title:'Se orienta por su cuenta', desc:'Inicia sesión y navega por la plataforma y la herramienta del curso sin ayuda.', note:'Necesitar menos ayuda cada semana también es un progreso real.'},
+     {ic:'🪜', title:'Completa pequeñas tareas', desc:'Completa las actividades cortas de cada clase y necesita cada vez menos apoyo.', note:'Lo importante es el esfuerzo y la independencia, no la perfección.'},
+     {ic:'🗣️', title:'Lo explica', desc:'Puede explicar con sus propias palabras qué hizo y por qué.', note:'Pídele que muestre en casa lo que hizo.'},
+     {ic:'🏁', title:'Tiene algo que mostrar', desc:'Un primer resultado pequeño: algo que se mueve, un primer dibujo o un primer programa que funciona.', note:'Consulta el manual: ¿cuál es el primer resultado que se desarrolla en el curso?'}
+   ],2)}
+   ${rclock([
+     {ic:'👋', when:'Después de las clases 1–2', t:'Establecer expectativas', d:'Qué hicimos, cómo serán las primeras semanas y cómo puede ayudar la familia en casa.'},
+     {ic:'🏁', when:'Alrededor de la clase 4', t:'Primeras evidencias', d:'Algo concreto que el estudiante haya creado o que ahora pueda hacer. Una captura de pantalla o una frase son suficientes.'},
+     {ic:'🔭', when:'Cada 4 clases', t:'Mantener el seguimiento', d:'Qué aprendió, qué viene después y algo que podamos celebrar.'}
+   ])}
+   ${doavoid(
+     ['Describe el progreso mediante pequeños pasos concretos que los padres puedan observar.','Invita a los padres a pedirle al estudiante que les muestre lo que ha creado.','Comparte las primeras evidencias antes de que los padres tengan que pedirlas.'],
+     ['Prometer resultados: <em>«Para el próximo mes ya estará creando sus propios videojuegos»</em>.','Utilizar términos técnicos que los padres no puedan imaginar o comprender.','Escribirles únicamente cuando algo sale mal.']
+   )}
+   ${co('co-cute','😟',`<p><strong>Si un padre está molesto porque la actividad de un módulo o una clase no es lo que esperaba.</strong> Primero, escucha. Después, explícale qué se abordará en los siguientes módulos (consulta el programa del curso) y aclara que la historia o la temática de las actividades se puede adaptar a los intereses de su hijo, pero las herramientas y los conocimientos que aprenderá seguirán siendo los mismos. En los cursos que utilizan varias herramientas, ofrece la posibilidad de trabajar con otro programa para realizar la misma actividad; la wiki y las notas para tutores incluyen alternativas para muchas de ellas. Si la familia solicita algo que no está incluido en el curso, repórtalo en BO e informa a tu Team Leader. Nunca prometas cambiar el curso.</p>`)}
+  `},
+  {t:'🧠 Estudiantes con necesidades especiales o ansiedad: ritmo, rutina y pasos más pequeños', html:`
+   <div class="card"><p>Algunos estudiantes que parecen haber «perdido el interés» en realidad pueden sentirse <strong>abrumados</strong>. El autismo (TEA), el TDAH y la ansiedad pueden hacer que una clase grupal en línea resulte impredecible, demasiado rápida o demasiado larga. Cuando un niño se siente así, puede desconectarse y dejar de participar. Es posible que la familia no te haya informado de esta situación, que el estudiante todavía esté en proceso de diagnóstico o que nunca haya sido evaluado. <strong>No necesitas un diagnóstico para adaptar tu clase</strong>, y nunca debes realizar uno: no etiquetes al estudiante, ni frente a la familia ni frente a ninguna persona del grupo.</p></div>
+   ${co('co-idea','🌈',`<p><strong>Cada caso es diferente.</strong> Dos estudiantes con el mismo diagnóstico pueden comportarse de maneras completamente distintas: uno puede hablar sin parar sobre su tema favorito, otro puede evitar usar el micrófono, otro puede terminar las actividades en pocos minutos y aburrirse, mientras que otro puede necesitar una rutina muy específica para sentirse seguro. Conoce al estudiante que tienes delante: eso es mucho más importante que cualquier etiqueta.</p>`)}
+   ${dimTabs([
+     {ic:'🔁', title:'Rutina',
+      intro:'La previsibilidad reduce la ansiedad y permite concentrarse mejor en el contenido.',
+      tips:[
+       {ic:'🧱', html:`<strong>Mantén la misma estructura en cada clase:</strong> inicio, práctica y cierre, siempre en el mismo orden.`},
+       {ic:'⏭️', html:`<strong>Anuncia los cambios antes de que ocurran:</strong> <em>«En 5 minutos cambiaremos de actividad y después...»</em>. Un cambio repentino puede hacer que un estudiante se bloquee o se niegue a participar.`},
+       {ic:'📋', html:`<strong>Muestra en pantalla o en el chat una lista numerada</strong> con los pasos de la clase para que el estudiante siempre sepa en qué parte se encuentra.`},
+       {ic:'⏲️', html:`<strong>Utiliza temporizadores con cuidado.</strong> Pueden ayudar a los estudiantes que disfrutan de los retos, pero para quienes se frustran cuando sienten presión por el tiempo, muestra el temporizador solo como referencia visual, sin hacer una cuenta regresiva en voz alta.`}
+      ]},
+     {ic:'🐢', title:'Ritmo',
+      intro:'Reduce la velocidad de tus explicaciones, no las ambiciones del estudiante.',
+      tips:[
+       {ic:'⏳', html:`<strong>Dale tiempo para responder.</strong> Espera unos segundos más de lo que considerarías normal antes de repetir la pregunta o continuar.`},
+       {ic:'🗣️', html:`<strong>Una voz tranquila y un ritmo más pausado</strong> transmiten seguridad incluso antes de empezar a explicar el contenido.`},
+       {ic:'🤸', html:`<strong>Los descansos cortos para moverse</strong> entre actividades ayudan más a mantener la atención que pedirles que permanezcan sentados: <em>«¿Quieres levantarte durante 10 segundos y después continuamos?»</em>.`},
+       {ic:'🚀', html:`<strong>¿Termina rápido y se aburre fácilmente?</strong> Utiliza las actividades adicionales de la clase o agrega una variación, un reto visual o un toque personal al proyecto.`}
+      ]},
+     {ic:'🪜', title:'Pasos más pequeños',
+      intro:'Divide la instrucción «terminar el proyecto» en pequeñas tareas, cada una con un objetivo claro y alcanzable.',
+      tips:[
+       {ic:'🎯', html:`<strong>Microtareas:</strong> <em>«Vamos a trabajar solo en el fondo del personaje; avísame cuando esté listo»</em>. Cada pequeña tarea completada genera una verdadera sensación de logro.`},
+       {ic:'1️⃣', html:`<strong>Da una instrucción a la vez</strong> y repite el objetivo antes de comenzar cada actividad.`},
+       {ic:'✅', html:`<strong>Utiliza una lista visible</strong> de lo que ya se completó y lo que falta, para que el estudiante no tenga que depender de su memoria. Esto es especialmente útil cuando un estudiante dice «ya terminé» y después se da cuenta de que perdió el hilo de lo que estaba haciendo.`},
+       {ic:'🧗', html:`<strong>Muestra el primer paso y después deja que el estudiante continúe por su cuenta.</strong> A medida que avance la clase, reduce poco a poco la ayuda que le proporcionas.`}
+      ]},
+     {ic:'💬', title:'Otras formas de participar',
+      intro:'No todos los estudiantes responderán en voz alta, y eso está bien.',
+      tips:[
+       {ic:'😀', html:`<strong>Acepta respuestas por chat,</strong> emojis, reacciones o señalando elementos en la pantalla.`},
+       {ic:'✌️', html:`<strong>Ofrece dos opciones visibles en lugar de hacer una pregunta abierta:</strong> <em>«¿El auto rojo o el azul?»</em> en lugar de <em>«¿Qué te gustaría hacer?»</em>.`},
+       {ic:'🎉', html:`<strong>Celebra cualquier intento de comunicación intencional,</strong> no solamente las respuestas habladas.`},
+       {ic:'⭐', html:`<strong>Utiliza sus temas favoritos como punto de partida.</strong> Un interés fuerte puede ser una excelente manera de involucrarlos: diseña la actividad del día en torno a ese interés.`}
+      ]}
+   ],'✅ Esto es aplicar rutinas, ajustar el ritmo, dividir las actividades en pasos más pequeños y ofrecer otras formas de participar.')}
+   ${co('co-cute','🫂',`<p><strong>Cuando aparezcan la frustración, el llanto o el bloqueo.</strong> Primero, regula tu propio comportamiento: baja la voz y reduce el ritmo. Reconoce la emoción sin juzgarla: <em>«Veo que esto te está frustrando»</em>, y ofrece una alternativa concreta en lugar de decir <em>«cálmate»</em>: <em>«Vamos a revisarlo juntos»</em>. Regresa a un paso que el estudiante haya logrado completar y retoma el contenido solo cuando se haya calmado. Nunca lo obligues a mantener contacto visual, encender la cámara o continuar trabajando en ese momento. Termina reconociendo su esfuerzo, no solamente el resultado.</p>`)}
+   ${co('co-idea','👪',`<p><strong>Con la familia, comparte observaciones, no juicios.</strong> En lugar de decir <em>«Se portó mal en clase»</em>, intenta algo como: <em>«Hoy noté que María se frustró cuando cambiamos de actividad sin avisarle. ¿Han observado algo parecido en casa? ¿Qué suele ayudarla?»</em>. Las familias conocen qué funciona mejor para sus hijos. Si la familia no responde, mantén una estructura consistente en tus clases, registra tus intentos de comunicación y deja que Client Service gestione la comunicación si la situación se vuelve difícil.</p>`)}
+   ${co('co-danger','📝',`<p><strong>Cuando las adaptaciones dentro del grupo no sean suficientes</strong> —el estudiante sigue desconectándose o parece necesitar un ritmo diferente al que el grupo puede ofrecer—, deja un comentario en BO explicando lo que observaste y lo que intentaste hacer, e informa a tu Team Leader. Tú puedes recomendar una solución, pero la decisión final es suya. Nunca prometas clases individuales ni cambios de modalidad por tu cuenta.</p>`)}
   `}
  ],
  ix:{
   title:'Atraer su atención — comprobación del módulo',
-  instr:'Elige la mejor acción para cada situación. 70 % para desbloquear la lista de verificación final.',
+  instr:'Selecciona la mejor acción o clasifica cada situación. Necesitas un 70 % para desbloquear la lista de verificación final.',
   items:[
    {type:'choice', prompt:'Un estudiante termina todas las actividades mucho más rápido que el grupo y luego empieza a distraer a los demás. ¿Cuál es la primera acción más útil?', opts:['Decir a los padres que el curso parece demasiado fácil y preguntarles qué les gustaría hacer','Esperar unas cuantas clases a ver si el resto del grupo lo alcanza','Subirle la dificultad — un reto extra o adelantar la tarea'], correct:2, fb:'El aburrimiento necesita un reto real, adaptado en la clase. Un estudiante que no se siente desafiado no le ve sentido al curso.'},
    {type:'choice', prompt:'Un estudiante está constantemente cansado y desconcentrado en una clase programada justo después del colegio. ¿Cuál es el mejor primer paso?', opts:['Hablar con los padres sobre cómo está funcionando el horario y dejar un comentario en BO','Mantener el horario actual — se acordó al inscribirse','Pedirle al estudiante que descanse más antes de la clase'], correct:0, fb:'Un horario que agota al estudiante a menudo tiene arreglo — habla con los padres y deja el comentario en BO, para que se pueda considerar un cambio antes de que se pierda la motivación.'},
    {type:'choice', prompt:'Un estudiante dice que los temas no le interesan y que ojalá hubiera elegido otro curso de Kodland. ¿Qué puedes hacer tú mismo?', opts:['Decirle que vas a gestionar el cambio al curso que prefiera','Ser flexible con la forma en que aborda las tareas y plantear una clase motivacional o de nivelación a tu Team Leader','Explicarle que los cambios de curso los gestiona otro departamento y continuar con la clase'], correct:1, fb:'Puedes adaptar cómo trabaja en la clase y plantear la opción de la clase de nivelación a tu Team Leader — no puedes prometer tú mismo un cambio de curso.'},
    {type:'choice', prompt:'Un estudiante tiene dificultades con el nivel y se está frustrando. ¿Cuál de estas opciones ayuda más?', opts:['Avanzar rápido para que no se sienta señalado','Mostrar en cámara cómo se hace primero, compartir código mientras explicas cómo funciona y comprobar que te sigue','Dejar que copie la solución de un compañero para que pueda seguir el ritmo'], correct:1, fb:'Demuestra primero, explica el proceso que hay detrás del código y comprueba que lo entiende — luego haz seguimiento fuera de la clase con algo que hizo bien.'},
-   {type:'choice', prompt:'¿Cuál de estas opciones construye mejor el tipo de vínculo que hace volver a un estudiante desconectado?', opts:['Dejar la charla informal fuera de la clase para tener más tiempo para el contenido','Llamar sobre todo a los estudiantes que siempre responden, para mantener el ritmo','Tareas en grupo, preguntas sobre sus juegos o series favoritos y reconocer algo ingenioso que dijeron'], correct:2, fb:'Una conexión con los compañeros y contigo es lo que hace que un estudiante quiera volver a cada clase — no solo el tema.'}
+   {type:'choice', prompt:'¿Cuál de estas opciones construye mejor el tipo de vínculo que hace volver a un estudiante desconectado?', opts:['Dejar la charla informal fuera de la clase para tener más tiempo para el contenido','Llamar sobre todo a los estudiantes que siempre responden, para mantener el ritmo','Tareas en grupo, preguntas sobre sus juegos o series favoritos y reconocer algo ingenioso que dijeron'], correct:2, fb:'Una conexión con los compañeros y contigo es lo que hace que un estudiante quiera volver a cada clase — no solo el tema.'},
+   {type:'choice', prompt:'Es la cuarta clase de un curso nuevo y los padres todavía no han recibido noticias tuyas. ¿Qué mensaje envías?', opts:['Un mensaje breve con algo concreto que su hijo haya creado, lo que está aprendiendo actualmente y lo que viene después.','«¡Todo va muy bien, no se preocupen!».','Nada. Si hubiera algún problema, los padres escribirían.'], correct:0, fb:'Mostrar evidencias concretas de pequeños avances permite que la familia entienda cómo se ve el progreso durante el primer mes, antes de que «mi hijo no está aprendiendo nada» se convierta en «mi hijo no está interesado».'},
+   {type:'sort', prompt:'¿A qué tipo de adaptación corresponde esta situación?', card:'Antes de cambiar de actividad, dices: «En 5 minutos dejaremos de dibujar y comenzaremos a animar». Un estudiante que antes se bloqueaba cada vez que había un cambio ahora sigue la actividad sin problemas.', zones:[{label:'🔁 Rutina', fb:'¡Correcto! Anunciar los cambios antes de que ocurran hace que la clase sea predecible, y la previsibilidad reduce la ansiedad.'},{label:'🐢 Ritmo', fb:'No exactamente. No se redujo la velocidad. El cambio se anunció con anticipación: eso corresponde a la rutina.'},{label:'🪜 Pasos más pequeños', fb:'No exactamente. La actividad no se dividió en tareas más pequeñas. Anunciar el cambio con anticipación corresponde a la rutina.'}], correctZone:0},
+   {type:'choice', prompt:'Un estudiante con TDAH sigue diciendo «¡Ya terminé!» y después admite que perdió el hilo de lo que estaba haciendo. ¿Qué sería más útil?', opts:['Pedirle que permanezca sentado y se concentre más.','Dividir la actividad en microtareas con objetivos claros y visibles, y utilizar una lista de verificación con lo que ya se completó y lo que falta.','Darle todo el proyecto de una sola vez para que pueda trabajar a su propio ritmo.'], correct:1, fb:'Las tareas pequeñas con objetivos claros, junto con una lista de verificación visible, reducen la carga de memoria. Además, completar cada pequeña tarea representa un logro real.'},
+   {type:'choice', prompt:'Un estudiante comienza a llorar porque su actividad no funciona. ¿Qué haces primero?', opts:['«Cálmate, no es para tanto. Sigamos adelante».','Bajas la voz, reconoces cómo se siente —«Veo que esto te está frustrando»— y le ofreces algo concreto: «Vamos a revisarlo juntos».','Continúas con el grupo y vuelves a atender al estudiante al final de la clase.'], correct:1, fb:'Decir «cálmate» no le da al estudiante ninguna acción concreta que pueda realizar. Reconoce su emoción, ofrécele una acción específica y vuelve a un paso que haya logrado completar. Retoma el contenido únicamente cuando se haya calmado.'}
   ]
  }
 },
@@ -256,7 +320,12 @@ const CONTENT = {
      'Ajusto la dificultad — un reto extra para quienes terminan rápido, apoyo o un nivel más bajo para quienes tienen dificultades',
      'Normalizo los errores, mantengo las normas de la clase y los turnos para hablar y escuchar, y soy firme pero amable',
      'Si un estudiante llega cansado por el horario, hablo con los padres y dejo un comentario en BO',
-     'Si el curso no es lo que esperaba, soy flexible en la clase y planteo una clase motivacional o de nivelación a mi Team Leader'
+     'Si el curso no es lo que esperaba, soy flexible en la clase y planteo una clase motivacional o de nivelación a mi Team Leader',
+     'Durante el primer mes, muestro a los padres cómo se ve el progreso: envío un mensaje después de las primeras clases y comparto evidencias concretas alrededor de la clase 4.',
+     'Mantengo la misma estructura en todas las clases, anuncio los cambios antes de que ocurran y muestro los pasos de la clase en pantalla o en el chat.',
+     'Con estudiantes con necesidades especiales o ansiedad, reduzco el ritmo de mis explicaciones, divido las actividades en pequeños pasos con objetivos visibles y acepto respuestas por chat o mediante reacciones.',
+     'Nunca etiqueto ni diagnostico a un estudiante. Comparto observaciones concretas con la familia y pregunto qué estrategias funcionan en casa.',
+     'Cuando las adaptaciones dentro del grupo no son suficientes, dejo un comentario en BO e informo a mi Team Leader. Nunca prometo clases individuales ni cambios de modalidad.'
    ])}
   `},
   {t:'', html:`

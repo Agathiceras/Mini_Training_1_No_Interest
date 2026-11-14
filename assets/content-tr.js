@@ -22,7 +22,7 @@ const CONTENT = {
     heroEyebrow:"🎯 Mini Eğitim",
     heroTitle:"<span class=\"h-pill\">İlgi Kaybını</span> Erken Fark Etmek",
     heroIntro:"Bu eğitimi, programlamaya veya tasarıma ilgi duymadıkları için iade talep eden öğrencileriniz olduğu için alıyorsunuz. Burada, bir eğitmen olarak neler yapabileceğinizi ve bu tür durumları nasıl yöneteceğinizi göstereceğiz.",
-    heroWork:"4 kısa modülü tamamlayın. Bir sonraki modülün kilidini açmak için her modül kontrolünde en az %70 almanız gerekir. Toplam süre yaklaşık 15–20 dakikadır.",
+    heroWork:"4 kısa modülü tamamlayın. Bir sonraki modülün kilidini açmak için her modülün değerlendirmesinden en az %70 almanız gerekir. Toplam süre yaklaşık 25–30 dakikadır.",
     startBtn:"🚀 Eğitimi Başlat",
     pathLabel:'Öğrenme Yolunuz',
     devTitle:'Geliştirici: inceleme için tüm modüllerin kilidini aç',
@@ -202,8 +202,8 @@ const CONTENT = {
 },
 {id:'attract', numLabel:'Modül 2', emoji:'🧭', color:'var(--coral)',
  title:'Dikkatlerini Yeniden Kazanmak',
- desc:'Henüz aşırı boyuta ulaşmamış ilgi kaybı için: genellikle neden kaynaklandığı ve derste gerçekte neleri uyarlayabileceğiniz.',
- obj:'Aşırı olmayan ilgi kaybının en yaygın nedenlerini — kursun öğrenciye uygunluğu, ders saati ve zorluk seviyesi — tanımak ve neleri kendinizin uyarlayabileceğinizi, neleri Takım Lideriniz aracılığıyla ilerletmeniz gerektiğini bilmek.',
+ desc:'Henüz ciddi bir seviyeye ulaşmamış ilgisizlik durumlarında: bunun yaygın nedenleri, ders sırasında neleri uyarlayabileceğiniz, ilk ayda öğrencinin gelişiminin nasıl göründüğünü velilere nasıl gösterebileceğiniz ve özel gereksinimleri veya kaygısı olan öğrencileri nasıl destekleyebileceğinizi ele alıyoruz.',
+ obj:'Ciddi seviyede olmayan ilgisizliğin en yaygın nedenlerini — kursun öğrenciye uygunluğu, ders programı ve zorluk seviyesi — tanımak; kendi başınıza neleri uyarlayabileceğinizi ve hangi konuları Takım Liderinize iletmeniz gerektiğini bilmek; ailenin ilk aydaki gelişime ilişkin beklentilerini belirlemek ve özel gereksinimleri veya kaygısı olan öğrenciler için dersin temposunu, rutinini ve her adımın büyüklüğünü uyarlamak.',
  sections:[
   {t:'🔎 Üç yaygın durum', html:`
    ${stepIconBlock('🔄','Kurs beklediği gibi çıkmadı ya da tasarımın/programlamanın kendisine göre olmadığını fark etti', `<div class="mt-pic-crop" style="aspect-ratio:1792/852"><img src="Pictures_T1/image%201.png" alt="Dizüstü bilgisayar ekranına kaşlarını çatarak bakan bir çocuk" style="width:107.14%;left:-3.571%;top:-13.146%"></div><div class="sib-strat">🎯 Strateji</div><p>Takım Liderinizle bir motivasyon dersi olasılığını konuşun. Derste esnek olun — öğrencinin çalışmasını kendine göre uyarlamasına izin verin (örneğin hikâye kurgusunu atlayıp yine de dersin temel konusunu öğrenmesi). Bir seviye dersi de yardımcı olabilir: öğrenci, gerçekten istediği şeye uyan farklı bir Kodland kursu bulabilir; onu keyif alacağı bir şeye yönlendirmek iadeyi önleyebilir.</p>`)}
@@ -219,17 +219,81 @@ const CONTENT = {
      {ic:'🎮', html:`<strong>Ortak ilgi alanlarını sorun</strong> — en sevdikleri diziler veya video oyunları, yaşadıkları yerle ilgili küçük merak konuları.`},
      {ic:'🌟', html:`<strong>Bir öğrencinin derste yaptığı ya da söylediği iyi veya zekice bir şeyi</strong> takdir edin.`}
    ])}
+  `},
+  {t:'📅 İlk ay: Velilere gelişimin nasıl göründüğünü göstermek', html:`
+   <div class="card"><p>Veliler gelişimi göremediğinde, çoğu zaman gelişim olmadığını düşünür. Bir kursun ilk dersleri temel becerileri oluşturur: sisteme giriş yapmak, araçları tanımak ve ilk küçük adımları atmak. Dışarıdan bakıldığında bu süreç «hiçbir şey olmuyor» gibi görünebilir. Aileye ne beklemesi gerektiği açıklanmazsa, «Çocuğum hiçbir şey öğrenmiyor» düşüncesi kısa sürede «Çocuğum ilgilenmiyor» düşüncesine dönüşebilir.</p></div>
+   ${patternCards([
+     {ic:'🧭', title:'Kendi başına yönünü bulur', desc:'Platforma giriş yapar ve platformda ve kurs aracında bağımsız olarak gezinir.', note:'Her hafta daha az yardıma ihtiyaç duyması gerçek bir gelişmedir.'},
+     {ic:'🪜', title:'Küçük görevleri tamamlar', desc:'Her dersteki kısa görevleri, her seferinde daha az desteğe ihtiyaç duyarak tamamlar.', note:'Önemli olan mükemmellik değil, çaba ve bağımsızlıktır.'},
+     {ic:'🗣️', title:'Yaptıklarını açıklayabilir', desc:'Ne yaptığını ve neden yaptığını kendi kelimeleriyle anlatabilir.', note:'Evde yaptıklarını velilerine göstermesini isteyin.'},
+     {ic:'🏁', title:'Gösterebileceği bir ürünü vardır', desc:'İlk küçük sonuç: hareket eden bir şey, ilk çizim veya çalışan ilk program.', note:'Kılavuzu kontrol edin: Kursta oluşturulan ilk ürün nedir?'}
+   ],2)}
+   ${rclock([
+     {ic:'👋', when:'1–2. dersten sonra', t:'Beklentileri belirleme', d:'Neler yaptık, ilk haftalarda neler olacak ve aile evde nasıl yardımcı olabilir?'},
+     {ic:'🏁', when:'Yaklaşık 4. derste', t:'İlk gelişim kanıtı', d:'Çocuğun oluşturduğu veya artık yapabildiği somut bir şey. Bir ekran görüntüsü veya tek bir cümle yeterlidir.'},
+     {ic:'🔭', when:'Her 4 derste bir', t:'Gelişimi sürdürme', d:'Neler öğrendi, sırada ne var ve kutlanabilecek bir başarı.'}
+   ])}
+   ${doavoid(
+     ['Gelişimi, velilerin görebileceği küçük ve somut adımlarla açıklayın.','Velileri, çocuklarından yaptıklarını göstermelerini istemeye teşvik edin.','Veliler istemeden önce ilk gelişim kanıtlarını paylaşın.'],
+     ['Sonuç garantisi vermek: <em>«Gelecek aya kadar kendi oyunlarını yapıyor olacak»</em>.','Velilerin gözünde canlandıramayacağı veya anlayamayacağı teknik terimler kullanmak.','Velilere yalnızca bir sorun yaşandığında yazmak.']
+   )}
+   ${co('co-cute','😟',`<p><strong>Bir veli, modül veya ders etkinliğinin beklentilerini karşılamaması nedeniyle rahatsızsa.</strong> Önce onu dinleyin. Ardından sonraki modüllerde hangi konuların işleneceğini açıklayın (kurs programını kontrol edin) ve etkinliğin hikâyesinin veya temasının çocuğun ilgi alanlarına göre uyarlanabileceğini, ancak kullanılan araçların ve edinilen bilgilerin aynı kalacağını belirtin. Birden fazla araç kullanılan kurslarda, aynı görevi farklı bir programla yapma esnekliği sunun. Wiki ve öğretmen notlarında birçok görev için alternatifler listelenmiştir. Aile kurs kapsamında olmayan bir şey istiyorsa bunu BO’ya bildirin ve Takım Liderinize haber verin. Kurs değişikliği yapacağınıza asla söz vermeyin.</p>`)}
+  `},
+  {t:'🧠 Özel gereksinimleri veya kaygısı olan öğrenciler: tempo, rutin ve küçük adımlar', html:`
+   <div class="card"><p>«İlgisini kaybetmiş» gibi görünen bazı öğrenciler aslında kendilerini <strong>bunalmış</strong> hissediyor olabilir. Otizm (OSB), DEHB ve kaygı, çevrim içi grup derslerinin öngörülemez, çok hızlı veya çok uzun hissettirmesine neden olabilir. Çocuk böyle hissettiğinde derse katılmayı bırakabilir. Aile size bu konuda bilgi vermemiş olabilir, öğrenci henüz tanı sürecinde olabilir veya daha önce hiç değerlendirilmemiş olabilir. <strong>Dersinizi uyarlamak için tanıya ihtiyacınız yoktur</strong> ve asla tanı koymamalısınız: çocuğu ne ailesinin yanında ne de gruptaki başka birinin yanında etiketleyin.</p></div>
+   ${co('co-idea','🌈',`<p><strong>Her öğrenci farklıdır.</strong> Aynı tanıya sahip iki öğrenci tamamen farklı davranabilir: biri en sevdiği konu hakkında durmadan konuşabilir, diğeri mikrofon kullanmaktan kaçınabilir, bir başkası görevleri birkaç dakika içinde bitirip sıkılabilir, diğeri ise kendini güvende hissetmek için kesin bir rutine ihtiyaç duyabilir. Önünüzdeki çocuğu tanıyın; bu, herhangi bir etiketten çok daha önemlidir.</p>`)}
+   ${dimTabs([
+     {ic:'🔁', title:'Rutin',
+      intro:'Öngörülebilirlik kaygıyı azaltır ve dikkatin içeriğe yönelmesini sağlar.',
+      tips:[
+       {ic:'🧱', html:`<strong>Her derste aynı yapıyı koruyun:</strong> açılış, uygulama ve kapanış; her zaman aynı sırayla.`},
+       {ic:'⏭️', html:`<strong>Değişiklikleri gerçekleşmeden önce duyurun:</strong> <em>«5 dakika sonra etkinliği değiştireceğiz, ardından...»</em>. Ani bir değişiklik öğrencinin donakalmasına veya katılmayı reddetmesine neden olabilir.`},
+       {ic:'📋', html:`Öğrencinin hangi aşamada olduğunu her zaman bilmesi için <strong>dersin adımlarını ekranda veya sohbette numaralı bir liste olarak gösterin</strong>.`},
+       {ic:'⏲️', html:`<strong>Zamanlayıcıları dikkatli kullanın.</strong> Meydan okumaları seven öğrencilere yardımcı olabilirler. Ancak zaman baskısı altında hayal kırıklığı yaşayan öğrenciler için zamanlayıcıyı yalnızca görsel bir referans olarak gösterin; sesli geri sayım yapmayın.`}
+      ]},
+     {ic:'🐢', title:'Tempo',
+      intro:'Anlatım hızınızı yavaşlatın, öğrencinin hedeflerini değil.',
+      tips:[
+       {ic:'⏳', html:`<strong>Yanıt vermesi için zaman tanıyın.</strong> Soruyu tekrarlamadan veya sonraki adıma geçmeden önce doğal bulduğunuzdan birkaç saniye daha fazla bekleyin.`},
+       {ic:'🗣️', html:`<strong>Sakin bir ses tonu ve daha yavaş bir tempo,</strong> içeriği anlatmaya başlamadan bile güven duygusu oluşturur.`},
+       {ic:'🤸', html:`<strong>Etkinlik blokları arasındaki kısa hareket molaları,</strong> öğrenciden hareketsiz oturmasını istemekten daha fazla yardımcı olabilir: <em>«10 saniye ayağa kalkmak ister misin? Sonra devam ederiz»</em>.`},
+       {ic:'🚀', html:`<strong>Görevleri hızlı bitiriyor ve kolayca sıkılıyor mu?</strong> Dersteki ek etkinlikleri kullanın veya projeye bir farklılık, görsel bir meydan okuma ya da kişisel bir dokunuş ekleyin.`}
+      ]},
+     {ic:'🪜', title:'Daha küçük adımlar',
+      intro:'«Projeyi bitir» talimatını, her biri açık ve ulaşılabilir bir hedefe sahip küçük görevlere bölün.',
+      tips:[
+       {ic:'🎯', html:`<strong>Mikro görevler:</strong> <em>«Şimdi sadece karakterin arka planını yapalım. Hazır olduğunda bana söyle»</em>. Tamamlanan her küçük görev gerçek bir başarı hissi yaratır.`},
+       {ic:'1️⃣', html:`<strong>Her seferinde tek bir yönerge verin</strong> ve her etkinlikten önce hedefi tekrarlayın.`},
+       {ic:'✅', html:`Öğrencinin yalnızca hafızasına güvenmemesi için tamamlanan ve yapılması gereken görevleri gösteren <strong>görünür bir kontrol listesi kullanın</strong>. Bu, özellikle «Bitirdim!» deyip ardından ne yaptığını unuttuğunu fark eden öğrenciler için faydalıdır.`},
+       {ic:'🧗', html:`<strong>İlk adımı gösterin,</strong> sonra geri kalanını öğrencinin yapmasına izin verin ve ders ilerledikçe verdiğiniz desteği yavaş yavaş azaltın.`}
+      ]},
+     {ic:'💬', title:'Diğer katılım yolları',
+      intro:'Her öğrenci sesli yanıt vermeyebilir ve bu tamamen normaldir.',
+      tips:[
+       {ic:'😀', html:`Sohbet, emojiler, tepkiler veya ekrandaki bir şeyi işaret ederek <strong>verilen yanıtları kabul edin</strong>.`},
+       {ic:'✌️', html:`<strong>Açık uçlu bir soru sormak yerine iki görünür seçenek sunun:</strong> <em>«Kırmızı araba mı, mavi araba mı?»</em> demek, <em>«Ne yapmak istersin?»</em> demekten daha yararlıdır.`},
+       {ic:'🎉', html:`Yalnızca sözlü yanıtları değil, <strong>her türlü bilinçli iletişim girişimini takdir edin</strong>.`},
+       {ic:'⭐', html:`<strong>Öğrencinin en sevdiği konuları ilgisini çekmek için kullanın.</strong> Güçlü bir ilgi alanı iyi bir başlangıç noktasıdır: günün etkinliğini bu ilgi alanı etrafında oluşturun.`}
+      ]}
+   ],'✅ Rutin oluşturmak, tempoyu uyarlamak, görevleri küçük adımlara bölmek ve başka katılım yolları sunmak işte budur.')}
+   ${co('co-cute','🫂',`<p><strong>Hayal kırıklığı, ağlama veya dersten tamamen kopma durumunda.</strong> Önce kendi davranışınızı kontrol edin: sesinizi alçaltın ve temponuzu yavaşlatın. Duyguyu yargılamadan ifade edin: <em>«Bunun seni hayal kırıklığına uğrattığını görüyorum»</em> ve <em>«Sakin ol»</em> demek yerine somut bir öneride bulunun: <em>«Hadi birlikte bakalım»</em>. Öğrencinin daha önce başardığı bir adıma geri dönün ve ancak sakinleştikten sonra içeriğe devam edin. O anda asla göz teması kurmaya, kamerayı açmaya veya çalışmaya devam etmeye zorlamayın. Dersi bitirirken yalnızca sonucu değil, gösterdiği çabayı da takdir edin.</p>`)}
+   ${co('co-idea','👪',`<p><strong>Aileyle iletişim kurarken yargılarınızı değil, gözlemlerinizi paylaşın.</strong> <em>«Derste yaramazlık yaptı»</em> demek yerine şöyle söyleyin: <em>«Bugün etkinliği önceden haber vermeden değiştirdiğimizde Maria’nın hayal kırıklığı yaşadığını fark ettim. Evde de benzer bir durum gözlemlediniz mi? Ona ne yardımcı oluyor?»</em>. Aileler çocukları için neyin işe yaradığını bilir. Aile yanıt vermezse derslerinizde tutarlı bir yapı sürdürün, iletişim girişimlerinizi kaydedin ve durum zorlaşırsa iletişimi Müşteri Hizmetlerine bırakın.</p>`)}
+   ${co('co-danger','📝',`<p><strong>Grup içinde yapılan uyarlamalar yeterli olmadığında</strong> — çocuk dersten kopmaya devam ediyorsa veya grubun sağlayabileceğinden farklı bir tempoya ihtiyaç duyuyorsa — gözlemlediğiniz durumu ve denediğiniz yöntemleri açıklayan bir BO yorumu bırakın ve Takım Liderinize haber verin. Siz öneride bulunabilirsiniz, ancak kararı onlar verir. Kendi başınıza bireysel ders veya format değişikliği sözü vermeyin.</p>`)}
   `}
  ],
  ix:{
   title:'Dikkatlerini yeniden kazanmak — modül kontrolü',
-  instr:'Her durum için en iyi hamleyi seçin. Son kontrol listesinin kilidini açmak için %70 gerekir.',
+  instr:'En uygun adımı seçin veya her durumu doğru kategoriyle eşleştirin. Son kontrol listesinin kilidini açmak için %70 almanız gerekir.',
   items:[
    {type:'choice', prompt:'Bir öğrenci her etkinliği gruptan çok daha hızlı bitiriyor, sonra diğerlerinin dikkatini dağıtmaya başlıyor. En faydalı ilk adım nedir?', opts:['Velilere kursun çok kolay göründüğünü söyleyip ne yapmak istediklerini sormak','Grubun geri kalanının yetişip yetişmeyeceğini görmek için birkaç ders beklemek','Onun için zorluğu artırmak — ekstra bir görev vermek veya ev ödevine erkenden başlamasını sağlamak'], correct:2, fb:'Sıkılmanın çaresi, derste uyarlanmış gerçek bir zorluktur. Kendini zorlanmış hissetmeyen bir öğrenci kursun bir anlamı olmadığını düşünür.'},
    {type:'choice', prompt:'Okuldan hemen sonraya planlanmış bir derste öğrenci sürekli yorgun ve dikkati dağınık. En iyi ilk adım nedir?', opts:['Ders saatinin öğrenciye nasıl geldiğini veliyle konuşmak ve BO’da bir yorum bırakmak','Mevcut ders saatini korumak — kayıt sırasında bu şekilde kararlaştırıldı','Öğrenciden dersten önce daha fazla dinlenmesini istemek'], correct:0, fb:'Öğrenciyi yoran bir ders saati çoğu zaman düzeltilebilir — veliyle konuşun ve BO’da yorum bırakın; böylece motivasyon kaybolmadan bir değişiklik değerlendirilebilir.'},
    {type:'choice', prompt:'Bir öğrenci, konuların ilgisini çekmediğini ve keşke farklı bir Kodland kursu seçmiş olsaydı diye düşündüğünü söylüyor. Siz kendiniz ne yapabilirsiniz?', opts:['Ona tercih ettiği kursa geçişini ayarlayacağınızı söylemek','Görevlere yaklaşımı konusunda esnek davranmak ve Takım Liderinizle bir motivasyon veya seviye dersi olasılığını konuşmak','Kurs değişikliklerinin başka bir departman tarafından yürütüldüğünü açıklayıp derse devam etmek'], correct:1, fb:'Derste nasıl çalıştığını uyarlayabilir ve seviye dersi seçeneğini Takım Liderinizle konuşabilirsiniz — kurs değişikliğini kendiniz vaat edemezsiniz.'},
    {type:'choice', prompt:'Bir öğrenci seviyede zorlanıyor ve hayal kırıklığına uğruyor. Bunlardan hangisi en çok yardımcı olur?', opts:['Tek başına dikkat çekmesin diye konuya hızla devam etmek','Önce kamerada nasıl yapıldığını göstermek, kodun nasıl çalıştığını açıklarken onu paylaşmak ve sizi takip ettiğinden emin olmak','Yetişebilmesi için bir sınıf arkadaşının çözümünü kopyalamasına izin vermek'], correct:1, fb:'Önce gösterin, kodun arkasındaki süreci açıklayın ve anladığından emin olun — ardından ders dışında iyi yaptığı bir şeyi vurgulayarak onunla ilgilenmeye devam edin.'},
-   {type:'choice', prompt:'Bunlardan hangisi, ilgisi azalmış bir öğrenciyi geri kazandıran türden bir bağı en iyi şekilde kurar?', opts:['İçeriğe daha çok zaman kalsın diye sohbeti dersten tamamen çıkarmak','Tempoyu korumak için çoğunlukla her zaman cevap veren öğrencilere söz vermek','Grup görevleri, en sevdikleri oyunlar veya diziler hakkında sorular ve söyledikleri zekice bir şeyi fark etmek'], correct:2, fb:'Bir öğrenciyi her derse geri gelmek istemeye iten şey yalnızca konu değil, sınıf arkadaşlarıyla ve sizinle kurduğu bağdır.'}
+   {type:'choice', prompt:'Bunlardan hangisi, ilgisi azalmış bir öğrenciyi geri kazandıran türden bir bağı en iyi şekilde kurar?', opts:['İçeriğe daha çok zaman kalsın diye sohbeti dersten tamamen çıkarmak','Tempoyu korumak için çoğunlukla her zaman cevap veren öğrencilere söz vermek','Grup görevleri, en sevdikleri oyunlar veya diziler hakkında sorular ve söyledikleri zekice bir şeyi fark etmek'], correct:2, fb:'Bir öğrenciyi her derse geri gelmek istemeye iten şey yalnızca konu değil, sınıf arkadaşlarıyla ve sizinle kurduğu bağdır.'},
+   {type:'choice', prompt:'Yeni bir kursun dördüncü dersindesiniz ve veli henüz sizden herhangi bir haber almadı. Ne gönderirsiniz?', opts:['Çocuğun oluşturduğu somut bir örneği, şu anda ne öğrendiğini ve sırada ne olduğunu içeren kısa bir mesaj.','«Her şey harika gidiyor, endişelenmeyin!»','Hiçbir şey — bir sorun olsaydı veli yazardı.'], correct:0, fb:'Küçük adımların somut kanıtlarını paylaşmak, «Hiçbir şey öğrenmiyor» düşüncesi «İlgilenmiyor» düşüncesine dönüşmeden önce ailenin ilk ayda gelişimin nasıl göründüğünü anlamasını sağlar.'},
+   {type:'sort', prompt:'Bu hangi uyarlama türüdür?', card:'Etkinliği değiştirmeden önce şöyle diyorsunuz: «5 dakika sonra çizimi bırakıp animasyona başlayacağız». Her değişiklikte daha önce donup kalan bir öğrenci artık derse sorunsuzca devam ediyor.', zones:[{label:'🔁 Rutin', fb:'Doğru! Değişiklikleri önceden duyurmak dersi öngörülebilir hâle getirir ve öngörülebilirlik kaygıyı azaltır.'},{label:'🐢 Tempo', fb:'Tam olarak değil — tempo yavaşlatılmadı. Değişiklik önceden duyuruldu; bu Rutin ile ilgilidir.'},{label:'🪜 Daha küçük adımlar', fb:'Tam olarak değil — görev daha küçük parçalara bölünmedi. Değişikliği önceden duyurmak Rutin ile ilgilidir.'}], correctZone:0},
+   {type:'choice', prompt:'DEHB’si olan bir öğrenci sürekli «Bitirdim!» diyor, ardından ne yaptığını unuttuğunu kabul ediyor. Ona en çok ne yardımcı olur?', opts:['Hareketsiz oturmasını ve daha fazla konsantre olmasını istemek.','Görünür hedefleri olan mikro görevlere bölmek ve tamamlanan ve yapılması gereken görevleri gösteren bir kontrol listesi kullanmak.','Kendi hızında çalışabilmesi için tüm projeyi tek seferde vermek.'], correct:1, fb:'Açık bir bitiş noktası olan küçük görevler ve görünür bir kontrol listesi hafıza üzerindeki yükü azaltır. Ayrıca tamamlanan her küçük görev gerçek bir başarıdır.'},
+   {type:'choice', prompt:'Bir öğrenci yaptığı görev çalışmadığı için ağlamaya başlıyor. İlk olarak ne yaparsınız?', opts:['«Sakin ol, o kadar da önemli değil. Devam edelim».','Sesinizi alçaltır, duygusunu ifade edersiniz — «Bunun seni hayal kırıklığına uğrattığını görüyorum» — ve somut bir öneride bulunursunuz: «Hadi birlikte bakalım».','Grupla devam eder ve öğrenciyle dersin sonunda ilgilenirsiniz.'], correct:1, fb:'«Sakin ol» demek çocuğa yapabileceği somut bir şey sunmaz. Duygusunu ifade edin, somut bir eylem önerin ve daha önce başardığı bir adıma geri dönün. Ancak sakinleştikten sonra içeriğe devam edin.'}
   ]
  }
 },
@@ -256,7 +320,12 @@ const CONTENT = {
      'Zorluk seviyesini ayarlıyorum — hızlı bitirenlere ekstra bir görev, zorlananlara destek veya daha düşük bir seviye',
      'Hataları olağan karşılıyor, sınıf kurallarını ve konuşma-dinleme sırasını koruyor, kararlı ama nazik davranıyorum',
      'Bir öğrenci ders saati nedeniyle yorgun geliyorsa veliyle konuşuyor ve BO’da bir yorum bırakıyorum',
-     'Kurs beklediği gibi değilse derste esnek davranıyor ve Takım Liderimle bir motivasyon veya seviye dersi olasılığını konuşuyorum'
+     'Kurs beklediği gibi değilse derste esnek davranıyor ve Takım Liderimle bir motivasyon veya seviye dersi olasılığını konuşuyorum',
+     'İlk ay boyunca velilere gelişimin nasıl göründüğünü gösteririm: ilk derslerden sonra bir mesaj gönderir ve yaklaşık 4. derste somut gelişim kanıtları paylaşırım.',
+     'Her derste aynı yapıyı korurum, değişiklikleri önceden duyururum ve dersin adımlarını ekranda veya sohbette gösteririm.',
+     'Özel gereksinimleri veya kaygısı olan öğrenciler için anlatım tempomu yavaşlatırım, görevleri görünür hedefleri olan küçük adımlara bölerim ve sohbet veya tepkiler yoluyla verilen yanıtları kabul ederim.',
+     'Bir çocuğu asla etiketlemem veya tanı koymam. Aileyle somut gözlemlerimi paylaşır ve evde hangi yöntemlerin işe yaradığını sorarım.',
+     'Grup içindeki uyarlamalar yeterli olmadığında BO’ya yorum bırakır ve Team Leader’ıma haber veririm. Asla kendi başıma bireysel ders veya format değişikliği sözü vermem.'
    ])}
   `},
   {t:'', html:`

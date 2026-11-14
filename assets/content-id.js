@@ -22,7 +22,7 @@ const CONTENT = {
     heroEyebrow:"🎯 Mini-Training",
     heroTitle:"Mengenali <span class=\"h-pill\">Hilangnya Minat</span> Sejak Dini",
     heroIntro:"Kamu menerima pelatihan ini karena ada siswamu yang mengajukan refund karena tidak tertarik pada pemrograman atau desain. Di sini kami akan menunjukkan apa yang bisa kamu lakukan sebagai tutor dan cara menangani situasi seperti ini.",
-    heroWork:"Selesaikan 4 modul singkat. Setiap cek modul butuh nilai 70%+ untuk membuka modul berikutnya. Total sekitar 15–20 menit.",
+    heroWork:"Selesaikan 4 modul singkat. Anda harus mendapatkan nilai minimal 70% pada setiap evaluasi modul untuk membuka modul berikutnya. Total durasi sekitar 25–30 menit.",
     startBtn:"🚀 Mulai Pelatihan",
     pathLabel:'Jalur belajarmu',
     devTitle:'Dev: buka semua modul untuk ditinjau',
@@ -202,8 +202,8 @@ const CONTENT = {
 },
 {id:'attract', numLabel:'Modul 2', emoji:'🧭', color:'var(--coral)',
  title:'Menarik Perhatian Mereka',
- desc:'Untuk hilangnya minat yang belum parah: apa yang biasanya menjadi penyebabnya, dan apa yang benar-benar bisa kamu sesuaikan di kelas.',
- obj:'Mengenali penyebab umum hilangnya minat yang belum parah — kecocokan kursus, jadwal, dan tingkat kesulitan — dan mengetahui mana yang bisa kamu sesuaikan sendiri dan mana yang perlu disampaikan melalui Team Leader-mu.',
+ desc:'Untuk situasi ketika siswa mulai kehilangan minat, tetapi kondisinya belum terlalu serius: apa penyebab umumnya, hal-hal yang dapat Anda sesuaikan selama kelas, cara menunjukkan perkembangan siswa kepada orang tua selama bulan pertama, serta cara mendukung siswa dengan kebutuhan khusus atau kecemasan.',
+ obj:'Mengenali penyebab paling umum dari menurunnya minat siswa yang belum tergolong serius — kesesuaian kursus, jadwal, dan tingkat kesulitan — mengetahui hal-hal yang dapat Anda sesuaikan sendiri dan hal-hal yang perlu diteruskan kepada Team Leader, menetapkan ekspektasi keluarga mengenai perkembangan selama bulan pertama, serta menyesuaikan tempo, rutinitas, dan ukuran setiap langkah untuk siswa dengan kebutuhan khusus atau kecemasan.',
  sections:[
   {t:'🔎 Tiga kasus yang umum', html:`
    ${stepIconBlock('🔄','Kursusnya tidak sesuai harapan, atau dia menyadari bahwa desain/pemrograman bukan untuknya', `<div class="mt-pic-crop" style="aspect-ratio:1792/852"><img src="Pictures_T1/image%201.png" alt="Seorang anak cemberut menatap layar laptop" style="width:107.14%;left:-3.571%;top:-13.146%"></div><div class="sib-strat">🎯 Strategi</div><p>Bicarakan dengan Team Leader-mu tentang kemungkinan pelajaran motivasi. Bersikaplah fleksibel di kelas — biarkan siswa menyesuaikan pekerjaannya (misalnya, melewatkan alur ceritanya tetapi tetap mempelajari topik inti pelajaran). Pelajaran penyetaraan juga bisa membantu: siswa mungkin menemukan kursus Kodland lain yang benar-benar sesuai dengan keinginannya, dan ini bisa mencegah refund dengan mengarahkannya ke sesuatu yang akan dia nikmati.</p>`)}
@@ -219,17 +219,81 @@ const CONTENT = {
      {ic:'🎮', html:`<strong>Tanyakan minat yang sama</strong> — acara atau video game favorit, hal-hal kecil yang menarik tentang tempat tinggal mereka.`},
      {ic:'🌟', html:`<strong>Akui hal baik atau cerdas</strong> yang dilakukan atau dikatakan siswa di kelas.`}
    ])}
+  `},
+  {t:'📅 Bulan pertama: menunjukkan kepada orang tua seperti apa perkembangan siswa', html:`
+   <div class="card"><p>Ketika orang tua tidak dapat melihat perkembangan anak, mereka sering berasumsi bahwa tidak ada perkembangan sama sekali. Kelas-kelas pertama dalam sebuah kursus bertujuan membangun dasar: masuk ke platform, mengenal berbagai alat, dan mengambil langkah-langkah kecil pertama. Dari sudut pandang orang tua, hal ini mungkin terlihat seperti «tidak ada yang terjadi». Jika tidak ada yang menjelaskan apa yang perlu diharapkan, pemikiran «anak saya tidak belajar apa pun» dapat dengan cepat berubah menjadi «anak saya tidak tertarik».</p></div>
+   ${patternCards([
+     {ic:'🧭', title:'Dapat menggunakan platform secara mandiri', desc:'Masuk ke platform dan menjelajahi platform serta alat yang digunakan dalam kursus tanpa bantuan.', note:'Semakin sedikit bantuan yang dibutuhkan setiap minggu merupakan perkembangan yang nyata.'},
+     {ic:'🪜', title:'Menyelesaikan tugas-tugas kecil', desc:'Menyelesaikan tugas singkat di setiap kelas dengan semakin sedikit bantuan.', note:'Yang terpenting adalah usaha dan kemandirian, bukan kesempurnaan.'},
+     {ic:'🗣️', title:'Dapat menjelaskan hasil pekerjaannya', desc:'Dapat menjelaskan dengan kata-katanya sendiri apa yang telah dilakukan dan alasannya.', note:'Mintalah siswa menunjukkan hasil pekerjaannya kepada orang tua di rumah.'},
+     {ic:'🏁', title:'Memiliki sesuatu untuk ditunjukkan', desc:'Hasil kecil pertama: sesuatu yang bergerak, gambar pertama, atau program pertama yang berhasil dijalankan.', note:'Periksa panduan: apa hal pertama yang akan dibuat siswa dalam kursus ini?'}
+   ],2)}
+   ${rclock([
+     {ic:'👋', when:'Setelah kelas 1–2', t:'Menetapkan ekspektasi', d:'Apa yang sudah kita lakukan, seperti apa minggu-minggu pertama, dan bagaimana keluarga dapat membantu di rumah.'},
+     {ic:'🏁', when:'Sekitar kelas 4', t:'Bukti perkembangan pertama', d:'Sesuatu yang konkret yang telah dibuat atau kini dapat dilakukan anak. Tangkapan layar atau satu kalimat sudah cukup.'},
+     {ic:'🔭', when:'Setiap 4 kelas', t:'Menjaga perkembangan', d:'Apa yang telah dipelajari, apa yang akan dipelajari berikutnya, dan satu hal yang patut dirayakan.'}
+   ])}
+   ${doavoid(
+     ['Jelaskan perkembangan melalui langkah-langkah kecil dan konkret yang dapat dilihat oleh orang tua.','Ajak orang tua untuk meminta anak menunjukkan hasil karyanya.','Kirimkan bukti perkembangan pertama sebelum orang tua memintanya.'],
+     ['Menjanjikan hasil tertentu: <em>«Bulan depan dia sudah bisa membuat game sendiri»</em>.','Menggunakan istilah teknis yang sulit dibayangkan atau dipahami oleh orang tua.','Menghubungi orang tua hanya ketika terjadi masalah.']
+   )}
+   ${co('co-cute','😟',`<p><strong>Jika orang tua merasa kecewa karena aktivitas dalam suatu modul atau kelas tidak sesuai dengan harapan mereka.</strong> Dengarkan terlebih dahulu. Kemudian, jelaskan materi yang akan dibahas dalam modul berikutnya (periksa program kursus) dan sampaikan bahwa cerita atau tema aktivitas dapat disesuaikan dengan minat anak, sementara alat dan pengetahuan yang dipelajari tetap sama. Dalam kursus yang menggunakan beberapa alat, tawarkan fleksibilitas untuk menggunakan program lain dalam menyelesaikan tugas yang sama. Wiki dan catatan tutor mencantumkan alternatif untuk banyak aktivitas. Jika keluarga menginginkan sesuatu yang tidak termasuk dalam kursus, laporkan melalui BO dan beri tahu Team Leader Anda. Jangan pernah menjanjikan perubahan kursus.</p>`)}
+  `},
+  {t:'🧠 Siswa dengan kebutuhan khusus atau kecemasan: tempo, rutinitas, dan langkah-langkah kecil', html:`
+   <div class="card"><p>Beberapa siswa yang terlihat «kehilangan minat» sebenarnya mungkin sedang merasa <strong>kewalahan</strong>. Autisme (ASD), ADHD, dan kecemasan dapat membuat kelas kelompok secara online terasa tidak terduga, terlalu cepat, atau terlalu lama. Ketika anak merasa seperti ini, mereka mungkin berhenti berpartisipasi. Keluarga mungkin belum memberi tahu Anda mengenai hal tersebut, siswa mungkin masih dalam proses diagnosis, atau mungkin belum pernah menjalani pemeriksaan. <strong>Anda tidak memerlukan diagnosis untuk menyesuaikan kelas</strong>, dan Anda tidak boleh memberikan diagnosis sendiri: jangan memberikan label kepada anak, baik di hadapan keluarga maupun anggota kelompok lainnya.</p></div>
+   ${co('co-idea','🌈',`<p><strong>Setiap kasus berbeda.</strong> Dua siswa dengan diagnosis yang sama dapat menunjukkan perilaku yang sangat berbeda: satu siswa mungkin terus berbicara tentang topik favoritnya, siswa lain menghindari penggunaan mikrofon, siswa lainnya menyelesaikan tugas dalam beberapa menit lalu merasa bosan, sementara siswa lain membutuhkan rutinitas yang sangat teratur agar merasa aman. Kenali anak yang sedang Anda ajar. Hal ini jauh lebih penting daripada label atau diagnosis apa pun.</p>`)}
+   ${dimTabs([
+     {ic:'🔁', title:'Rutinitas',
+      intro:'Hal-hal yang dapat diprediksi mengurangi kecemasan dan membantu siswa lebih fokus pada materi.',
+      tips:[
+       {ic:'🧱', html:`<strong>Pertahankan struktur yang sama di setiap kelas:</strong> pembukaan, praktik, dan penutupan, selalu dalam urutan yang sama.`},
+       {ic:'⏭️', html:`<strong>Beritahukan perubahan sebelum terjadi:</strong> <em>«Dalam 5 menit kita akan berganti aktivitas, lalu kita akan...»</em>. Perubahan mendadak dapat membuat siswa terdiam, kebingungan, atau menolak untuk berpartisipasi.`},
+       {ic:'📋', html:`<strong>Tampilkan daftar bernomor di layar atau melalui chat</strong> yang berisi langkah-langkah kelas agar siswa selalu mengetahui posisi mereka dalam kegiatan.`},
+       {ic:'⏲️', html:`<strong>Gunakan timer dengan hati-hati.</strong> Timer dapat membantu siswa yang menyukai tantangan. Namun, bagi siswa yang mudah frustrasi karena tekanan waktu, tampilkan timer hanya sebagai referensi visual tanpa melakukan hitung mundur dengan suara keras.`}
+      ]},
+     {ic:'🐢', title:'Tempo',
+      intro:'Perlambat cara Anda menjelaskan, bukan ambisi siswa.',
+      tips:[
+       {ic:'⏳', html:`<strong>Berikan waktu untuk menjawab.</strong> Tunggu beberapa detik lebih lama dari biasanya sebelum mengulangi pertanyaan atau melanjutkan ke langkah berikutnya.`},
+       {ic:'🗣️', html:`<strong>Suara yang tenang dan tempo yang lebih lambat</strong> memberikan rasa aman bahkan sebelum Anda mulai menjelaskan materi.`},
+       {ic:'🤸', html:`<strong>Istirahat singkat untuk bergerak</strong> di antara sesi aktivitas dapat membantu menjaga perhatian lebih baik daripada meminta siswa untuk terus duduk diam: <em>«Mau berdiri selama 10 detik, lalu kita lanjutkan?»</em>.`},
+       {ic:'🚀', html:`<strong>Apakah siswa menyelesaikan tugas dengan cepat dan mudah merasa bosan?</strong> Gunakan aktivitas tambahan dalam kelas atau tambahkan variasi, tantangan visual, atau sentuhan pribadi pada proyek.`}
+      ]},
+     {ic:'🪜', title:'Langkah-langkah kecil',
+      intro:'Ubah instruksi «selesaikan proyek» menjadi beberapa tugas kecil, masing-masing dengan tujuan yang jelas dan dapat dicapai.',
+      tips:[
+       {ic:'🎯', html:`<strong>Tugas mikro:</strong> <em>«Ayo kita kerjakan latar belakang karakter terlebih dahulu. Beri tahu saya kalau sudah selesai»</em>. Setiap tugas kecil yang berhasil diselesaikan memberikan rasa pencapaian yang nyata.`},
+       {ic:'1️⃣', html:`<strong>Berikan satu instruksi dalam satu waktu</strong> dan ulangi tujuan sebelum memulai setiap aktivitas.`},
+       {ic:'✅', html:`<strong>Gunakan daftar yang terlihat</strong> untuk menunjukkan apa yang sudah selesai dan apa yang masih harus dikerjakan agar siswa tidak hanya mengandalkan ingatan. Ini sangat berguna ketika siswa berkata «Sudah selesai!» lalu menyadari bahwa mereka lupa apa yang sedang dikerjakan.`},
+       {ic:'🧗', html:`<strong>Tunjukkan langkah pertama,</strong> kemudian biarkan siswa mengerjakan sisanya sendiri dan secara bertahap kurangi bantuan selama kelas berlangsung.`}
+      ]},
+     {ic:'💬', title:'Cara lain untuk berpartisipasi',
+      intro:'Tidak semua siswa akan menjawab secara lisan, dan itu tidak masalah.',
+      tips:[
+       {ic:'😀', html:`<strong>Terima jawaban melalui chat,</strong> emoji, reaksi, atau dengan menunjuk bagian tertentu di layar.`},
+       {ic:'✌️', html:`<strong>Berikan dua pilihan yang terlihat daripada mengajukan pertanyaan terbuka:</strong> <em>«Mobil merah atau mobil biru?»</em> daripada <em>«Apa yang ingin kamu lakukan?»</em>.`},
+       {ic:'🎉', html:`<strong>Hargai setiap upaya komunikasi yang disengaja,</strong> bukan hanya jawaban lisan.`},
+       {ic:'⭐', html:`<strong>Gunakan topik favorit siswa sebagai cara untuk menarik perhatian mereka.</strong> Minat yang kuat dapat menjadi titik awal yang baik: buat aktivitas hari ini berdasarkan minat tersebut.`}
+      ]}
+   ],'✅ Inilah yang dimaksud dengan menerapkan rutinitas, menyesuaikan tempo, membagi tugas menjadi langkah-langkah kecil, dan menyediakan cara lain untuk berpartisipasi.')}
+   ${co('co-cute','🫂',`<p><strong>Ketika siswa mulai frustrasi, menangis, atau berhenti berpartisipasi.</strong> Pertama, kendalikan reaksi Anda sendiri: turunkan volume suara dan perlambat tempo. Kenali emosinya tanpa menghakimi: <em>«Saya melihat ini membuatmu frustrasi»</em>, lalu tawarkan sesuatu yang konkret daripada mengatakan <em>«Tenanglah»</em>: <em>«Ayo kita periksa bersama»</em>. Kembali ke langkah yang sebelumnya berhasil dilakukan siswa dan lanjutkan materi hanya setelah emosinya mereda. Jangan pernah memaksa siswa untuk melakukan kontak mata, menyalakan kamera, atau melanjutkan pekerjaan pada saat itu. Akhiri dengan menghargai usahanya, bukan hanya hasilnya.</p>`)}
+   ${co('co-idea','👪',`<p><strong>Saat berkomunikasi dengan keluarga, sampaikan pengamatan, bukan penilaian.</strong> Daripada mengatakan <em>«Dia berperilaku buruk di kelas»</em>, cobalah mengatakan: <em>«Hari ini saya memperhatikan bahwa Maria merasa frustrasi ketika kami mengganti aktivitas tanpa pemberitahuan sebelumnya. Apakah Anda pernah melihat hal serupa di rumah? Apa yang biasanya membantunya?»</em>. Keluarga mengetahui hal-hal yang paling efektif untuk anak mereka. Jika keluarga tidak merespons, pertahankan struktur kelas yang konsisten, catat upaya Anda, dan serahkan komunikasi kepada Client Service jika situasinya menjadi sulit.</p>`)}
+   ${co('co-danger','📝',`<p><strong>Ketika penyesuaian dalam kelompok saja tidak cukup</strong> — anak terus menutup diri, atau tampaknya membutuhkan tempo yang berbeda dari yang bisa diberikan kelompok — tinggalkan komentar di BO tentang apa yang Anda lihat dan apa yang sudah Anda coba, lalu beri tahu Team Leader Anda. Anda memberi rekomendasi; mereka yang memutuskan. Jangan pernah menjanjikan kelas individu atau perubahan format sendiri.</p>`)}
   `}
  ],
  ix:{
   title:'Menarik perhatian mereka — cek modul',
-  instr:'Pilih langkah terbaik untuk setiap situasi. 70% untuk membuka checklist akhir.',
+  instr:'Pilih langkah terbaik atau kelompokkan setiap situasi. Nilai 70% diperlukan untuk membuka daftar periksa akhir.',
   items:[
    {type:'choice', prompt:'Seorang siswa selalu menyelesaikan setiap aktivitas jauh lebih cepat daripada grupnya, lalu mulai mengganggu yang lain. Apa langkah pertama yang paling berguna?', opts:['Memberi tahu orang tua bahwa kursusnya tampak terlalu mudah dan menanyakan apa yang mereka inginkan','Menunggu beberapa pelajaran untuk melihat apakah anggota grup lainnya bisa menyusul','Menaikkan tingkat kesulitan untuknya — tantangan tambahan atau mulai mengerjakan PR lebih awal'], correct:2, fb:'Kebosanan butuh tantangan nyata, yang disesuaikan di kelas. Siswa yang tidak merasa tertantang tidak melihat gunanya kursus ini.'},
    {type:'choice', prompt:'Seorang siswa selalu tampak lelah dan tidak fokus di kelas yang dijadwalkan tepat sepulang sekolah. Apa langkah pertama yang terbaik?', opts:['Berbicara dengan orang tua tentang bagaimana jadwalnya berjalan dan meninggalkan komentar di BO','Mempertahankan jadwal saat ini — itu sudah disepakati saat pendaftaran','Meminta siswa untuk lebih banyak beristirahat sebelum kelas'], correct:0, fb:'Jadwal yang menguras tenaga siswa sering kali bisa diperbaiki — bicarakan dengan orang tua dan tinggalkan komentar di BO, supaya perubahan bisa dipertimbangkan sebelum motivasinya hilang.'},
    {type:'choice', prompt:'Seorang siswa bilang topiknya tidak menarik baginya dan dia berharap memilih kursus Kodland yang lain. Apa yang bisa kamu lakukan sendiri?', opts:['Bilang bahwa kamu akan mengatur perpindahan ke kursus yang dia inginkan','Tetap fleksibel dalam cara dia mengerjakan tugas, dan usulkan pelajaran motivasi atau pelajaran penyetaraan kepada Team Leader-mu','Menjelaskan bahwa perpindahan kursus ditangani oleh departemen lain lalu melanjutkan pelajaran'], correct:1, fb:'Kamu bisa menyesuaikan cara dia bekerja di kelas dan mengusulkan opsi pelajaran penyetaraan kepada Team Leader-mu — kamu tidak bisa menjanjikan perpindahan kursus sendiri.'},
    {type:'choice', prompt:'Seorang siswa kesulitan dengan levelnya dan mulai frustrasi. Mana yang paling membantu?', opts:['Cepat-cepat lanjut supaya dia tidak merasa disorot','Menunjukkan caranya di kamera terlebih dahulu, membagikan kode sambil menjelaskan cara kerjanya, dan memastikan dia bisa mengikuti','Membiarkannya menyalin jawaban teman supaya bisa mengejar'], correct:1, fb:'Contohkan dulu, jelaskan proses di balik kodenya, dan cek pemahamannya — lalu lakukan tindak lanjut di luar pelajaran dengan menyoroti sesuatu yang sudah dia lakukan dengan baik.'},
-   {type:'choice', prompt:'Mana yang paling bisa membangun ikatan yang membuat siswa yang kehilangan minat kembali bersemangat?', opts:['Tidak ada obrolan ringan di kelas supaya ada lebih banyak waktu untuk materi','Lebih sering memanggil siswa yang selalu menjawab, supaya tempo tetap terjaga','Tugas kelompok, pertanyaan tentang game atau acara favorit mereka, dan memperhatikan hal cerdas yang mereka katakan'], correct:2, fb:'Kedekatan dengan teman sekelas dan denganmu adalah hal yang membuat siswa ingin kembali di setiap pelajaran — bukan hanya topiknya.'}
+   {type:'choice', prompt:'Mana yang paling bisa membangun ikatan yang membuat siswa yang kehilangan minat kembali bersemangat?', opts:['Tidak ada obrolan ringan di kelas supaya ada lebih banyak waktu untuk materi','Lebih sering memanggil siswa yang selalu menjawab, supaya tempo tetap terjaga','Tugas kelompok, pertanyaan tentang game atau acara favorit mereka, dan memperhatikan hal cerdas yang mereka katakan'], correct:2, fb:'Kedekatan dengan teman sekelas dan denganmu adalah hal yang membuat siswa ingin kembali di setiap pelajaran — bukan hanya topiknya.'},
+   {type:'choice', prompt:'Ini adalah kelas keempat dari kursus baru dan orang tua belum mendengar kabar dari Anda. Apa yang Anda kirimkan?', opts:['Pesan singkat berisi sesuatu yang konkret yang dibuat anak mereka, apa yang sedang dipelajari sekarang, dan apa yang akan dipelajari selanjutnya','«Semuanya berjalan sangat baik, jangan khawatir!»','Tidak mengirim apa pun — jika ada masalah, orang tua pasti akan menulis'], correct:0, fb:'Bukti konkret dari langkah-langkah kecil menunjukkan kepada keluarga seperti apa perkembangan itu di bulan pertama — sebelum «dia tidak belajar apa-apa» berubah menjadi «dia tidak tertarik».'},
+   {type:'sort', prompt:'Adaptasi apa ini?', card:'Sebelum berganti aktivitas, Anda berkata: «Lima menit lagi kita berhenti menggambar dan mulai membuat animasi.» Siswa yang dulu membeku setiap kali ada perubahan kini mengikuti dengan baik.', zones:[{label:'🔁 Rutinitas', fb:'Benar — mengumumkan perubahan sebelum terjadi membuat kelas dapat diprediksi, dan keteraturan yang dapat diprediksi menurunkan kecemasan.'},{label:'🐢 Tempo', fb:'Belum tepat — tidak ada yang diperlambat. Perubahan diumumkan lebih dulu: itu adalah Rutinitas.'},{label:'🪜 Langkah-langkah kecil', fb:'Belum tepat — tugasnya tidak dibagi. Mengumumkan perubahan lebih dulu berkaitan dengan Rutinitas.'}], correctZone:0},
+   {type:'choice', prompt:'Seorang siswa dengan ADHD terus berkata «Aku sudah selesai!» lalu mengaku lupa apa yang sedang dikerjakannya. Apa yang paling membantu?', opts:['Memintanya duduk tenang dan berkonsentrasi lebih keras','Tugas-tugas mikro dengan garis akhir yang terlihat dan daftar periksa tentang apa yang sudah selesai dan apa yang tersisa','Memberikan seluruh proyek sekaligus agar mereka bisa bekerja sesuai kecepatan sendiri'], correct:1, fb:'Tugas-tugas kecil dengan akhir yang jelas, ditambah daftar periksa yang terlihat, meringankan beban ingatan — dan setiap penyelesaian kecil adalah kemenangan yang nyata.'},
+   {type:'choice', prompt:'Seorang siswa mulai menangis ketika tugasnya tidak berhasil. Apa yang Anda lakukan pertama kali?', opts:['«Tenanglah, ini bukan masalah besar — ayo lanjut.»','Turunkan volume suara, sebutkan perasaannya — «Saya melihat ini membuatmu frustrasi» — dan tawarkan sesuatu yang konkret: «Ayo kita periksa bersama.»','Lanjutkan bersama kelompok dan kembali kepada siswa itu di akhir kelas'], correct:1, fb:'«Tenanglah» tidak memberi anak sesuatu untuk dilakukan. Sebutkan emosinya, tawarkan tindakan konkret, kembali ke langkah yang sudah berhasil dilakukannya — dan baru kembali ke materi setelah ia tenang.'}
   ]
  }
 },
@@ -256,7 +320,12 @@ const CONTENT = {
      'Saya menyesuaikan tingkat kesulitan — tantangan tambahan bagi yang selesai cepat, dukungan atau level yang lebih rendah bagi yang kesulitan',
      'Saya menganggap kesalahan sebagai hal yang wajar, menegakkan aturan kelas serta giliran berbicara dan mendengarkan, dan tetap tegas tapi ramah',
      'Jika seorang siswa datang dalam keadaan lelah karena jadwalnya, saya berbicara dengan orang tuanya dan meninggalkan komentar di BO',
-     'Jika kursusnya tidak sesuai harapan, saya tetap fleksibel di kelas dan mengusulkan pelajaran motivasi atau pelajaran penyetaraan kepada Team Leader saya'
+     'Jika kursusnya tidak sesuai harapan, saya tetap fleksibel di kelas dan mengusulkan pelajaran motivasi atau pelajaran penyetaraan kepada Team Leader saya',
+     'Pada bulan pertama, saya menunjukkan kepada orang tua seperti apa perkembangan anaknya: sebuah pesan setelah beberapa kelas pertama, dan bukti konkret sekitar kelas ke-4',
+     'Saya mempertahankan struktur kelas yang sama, mengumumkan perubahan sebelum terjadi, dan menampilkan langkah-langkah kelas di layar atau di obrolan',
+     'Untuk siswa dengan kebutuhan khusus atau kecemasan, saya memperlambat penyampaian, membagi tugas menjadi langkah-langkah kecil dengan garis akhir yang terlihat, dan menerima jawaban melalui obrolan atau reaksi',
+     'Saya tidak pernah memberi label atau mendiagnosis anak — saya membagikan pengamatan konkret kepada keluarga dan bertanya apa yang berhasil di rumah',
+     'Ketika penyesuaian dalam kelompok tidak cukup, saya meninggalkan komentar di BO dan memberi tahu Team Leader saya — saya tidak pernah menjanjikan kelas individu atau perubahan format'
    ])}
   `},
   {t:'', html:`

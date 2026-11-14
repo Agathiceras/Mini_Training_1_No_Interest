@@ -98,7 +98,8 @@ function lmsSend(event){
   }catch(e){}
 }
 // 'completed' is sent once per page load, as soon as every module is passed (also on load, if it was already done).
-function lmsSync(){ if(!lmsReady) return; lmsSend('progress'); if(!completedSent && !isDevMode() && allModulesPassed()){ completedSent=true; lmsSend('completed'); } }
+function canComplete(){ return typeof window.TD_CAN_COMPLETE!=='function' || window.TD_CAN_COMPLETE(); }
+function lmsSync(){ if(!lmsReady) return; lmsSend('progress'); if(!completedSent && !isDevMode() && allModulesPassed() && canComplete()){ completedSent=true; lmsSend('completed'); } }
 window.addEventListener('message', function(e){
   try{
     if(!IN_LMS || e.source!==window.parent) return;
