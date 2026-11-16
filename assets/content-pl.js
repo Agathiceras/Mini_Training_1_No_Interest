@@ -22,7 +22,7 @@ const CONTENT = {
     heroEyebrow:"🎯 Miniszkolenie",
     heroTitle:"Wczesne wychwytywanie <span class=\"h-pill\">braku zaangażowania</span>",
     heroIntro:"Otrzymujesz to szkolenie, ponieważ masz uczniów, którzy poprosili o zwrot pieniędzy, a jako powód podali brak zainteresowania programowaniem lub projektowaniem. Pokażemy ci, co możesz z tym zrobić jako nauczyciel i jak radzić sobie w takich sytuacjach.",
-    heroWork:"Ukończ 4 krótkie moduły. Aby odblokować kolejny moduł, musisz uzyskać co najmniej 70% w teście każdego modułu. Całkowity czas trwania: około 25–30 minut.",
+    heroWork:"Ukończ 4 krótkie moduły. Aby odblokować kolejny moduł, musisz uzyskać co najmniej 70% z testu w każdym module. Całkowity czas trwania: około 25–30 minut.",
     startBtn:"🚀 Rozpocznij szkolenie",
     pathLabel:'Twoja ścieżka nauki',
     devTitle:'Dev: odblokuj wszystkie moduły do przeglądu',
@@ -220,11 +220,11 @@ const CONTENT = {
      {ic:'🌟', html:`<strong>Doceniaj coś dobrego lub pomysłowego</strong>, co uczeń zrobił lub powiedział na zajęciach.`}
    ])}
   `},
-  {t:'📅 Pierwszy miesiąc: pokazywanie rodzicom, jak wyglądają postępy', html:`
+  {t:'📅 Pierwszy miesiąc: przekazywanie rodzicom, jak wyglądają postępy', html:`
    <div class="card"><p>Kiedy rodzice nie widzą postępów, często zakładają, że ich nie ma. Pierwsze lekcje kursu służą budowaniu podstaw: logowaniu się, poznawaniu narzędzi i wykonywaniu pierwszych małych kroków. Z zewnątrz może to wyglądać tak, jakby «nic się nie działo». Jeśli nikt nie wyjaśni rodzinie, czego może się spodziewać, myśl «moje dziecko niczego się nie uczy» może szybko zmienić się w «moje dziecko nie jest zainteresowane».</p></div>
    ${patternCards([
-     {ic:'🧭', title:'Samodzielnie porusza się po platformie', desc:'Loguje się i samodzielnie porusza się po platformie oraz narzędziu wykorzystywanym na kursie.', note:'Potrzebowanie na coraz mniejszą pomoc z każdym tygodniem to prawdziwy postęp.'},
-     {ic:'🪜', title:'Wykonuje małe zadania', desc:'Wykonuje krótkie zadania podczas każdej lekcji, za każdym razem potrzebując coraz mniej wsparcia.', note:'Najważniejsze są wysiłek i samodzielność, a nie perfekcja.'},
+     {ic:'🧭', title:'Samodzielnie porusza się po platformie', desc:'Loguje się i samodzielnie porusza się po platformie oraz w programach i narzędziach wykorzystywanych na kursie.', note:'Coraz mniejsza potrzeba pomocy z tygodnia na tydzień to prawdziwy postęp.'},
+     {ic:'🪜', title:'Wykonuje małe zadania', desc:'Wykonuje krótkie zadania podczas każdej lekcji, za każdym razem potrzebuje coraz mniej wsparcia.', note:'Najważniejsze są wysiłek i samodzielność, a nie perfekcja.'},
      {ic:'🗣️', title:'Potrafi wyjaśnić, co zrobiło', desc:'Potrafi własnymi słowami opowiedzieć, co zrobiło i dlaczego.', note:'Poproś ucznia, aby pokazał rodzicom w domu, co stworzył.'},
      {ic:'🏁', title:'Ma coś do pokazania', desc:'Pierwszy niewielki rezultat: coś, co się porusza, pierwszy rysunek lub pierwszy działający program.', note:'Sprawdź instrukcję: co jest pierwszym projektem tworzonym podczas kursu?'}
    ],2)}
