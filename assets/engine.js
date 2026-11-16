@@ -94,7 +94,7 @@ function lmsSend(event){
     const p=getProgress();
     const done=MODULES.filter(m=>p[m.id]?.passed===true).length;
     const score=Math.round(MODULES.map(m=>Number(p[m.id]?.score)||0).reduce((a,b)=>a+b,0)/MODULES.length);
-    window.parent.postMessage({source:'kodland-training', training:TRAINING_ID, lang:LANG, event:event, progress:p, done:done, total:MODULES.length, score:score}, '*');
+    window.parent.postMessage(Object.assign({source:'kodland-training', training:TRAINING_ID, lang:LANG, event:event, progress:p, done:done, total:MODULES.length, score:score}, window.TD_TIME_FIELDS ? window.TD_TIME_FIELDS() : {}), '*');
   }catch(e){}
 }
 // 'completed' is sent once per page load, as soon as every module is passed (also on load, if it was already done).
