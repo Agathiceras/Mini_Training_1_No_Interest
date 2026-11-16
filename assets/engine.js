@@ -222,7 +222,8 @@ function renderHome(){
 function openModule(idx){
   const m=MODULES[idx];
   currentModule=m.id;
-  if(!m.ix){ setResult(m.id,100,true); }
+  // assets/td-gate.js holds a reading module until everything in it has been opened, then passes it
+  if(!m.ix && !(window.TD_GATE_HOLD && window.TD_GATE_HOLD(m.id))){ setResult(m.id,100,true); }
   const body=document.getElementById('contentBody');
   const eyebrow = m.eyebrow || ((m.numLabel||T('moduleN',{n:idx+1}))+' '+T('of')+' '+MODULES.length);
   const secs = m.sections.map((s,i)=>({s:s,i:i,lead:leadEmoji(s.t)}));
